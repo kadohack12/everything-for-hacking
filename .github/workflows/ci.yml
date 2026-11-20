@@ -66,3 +66,29 @@ jobs:
           python-version: "3.12"
       - name: Vérifier que l'index a été régénéré
         run: python3 scripts/update_index.py --check
+
+  structure:
+    name: Structure des writeups
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Valider l'arborescence et le frontmatter
+        run: python3 scripts/check_frontmatter.py
+
+  cours:
+    name: Cours protégés
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Récupérer la branche de base
+        run: git fetch --no-tags origin "${{ github.base_ref }}:refs/remotes/origin/${{ github.base_ref }}"
+      - name: Refuser une modification de cours/ hors mainteneur
+        run: python3 scripts/check_cours_protection.py --actor "${{ github.actor }}" --base "origin/${{ github.base_ref }}"

@@ -2,6 +2,11 @@
 
 Retour à l'[accueil](../README.md) · Voir les [writeups](../writeups/README.md)
 
+> **Espace protégé.** Ce dossier est un support pédagogique : il n'accepte pas de PR directe.
+> Une erreur, une imprécision, une source manquante ? Ouvre une issue
+> **« Signaler une erreur »** : la correction est relue et intégrée par un mainteneur
+> (voir [`CONTRIBUTING.md`](../CONTRIBUTING.md#8-cours--espace-protégé)).
+
 Notes de cours structurées, avec une progression du plus fondamental vers le plus appliqué.
 Chaque module a son `README.md` (plan + notes) et un dossier `assets/` pour les schémas.
 
