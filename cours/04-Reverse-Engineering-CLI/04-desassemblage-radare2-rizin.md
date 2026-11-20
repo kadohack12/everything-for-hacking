@@ -422,9 +422,12 @@ $ r2 -q -c 'aaa; agf @ main' ./crackme
 et les annotations de prototype sont omises.)
 
 Lecture : sous chaque bloc conditionnel, **`f` et `t`** marquent la branche fausse (*false*) et
-vraie (*true*). Ici, `je 0x12af` (saut si zéro) : la branche `t` part vers `0x12af` quand le test
-renvoie 0, la branche `f` continue vers `0x1299` (« presque... »). C'est l'inverse de l'intuition
-« vrai = on saute » : `je` saute quand la condition est vraie, donc `t` suit le saut.
+vraie (*true*) **du saut**. Ici `test eax, eax` puis `je 0x12af` : `t` (saut pris) part vers
+`0x12af` quand `eax` vaut 0, `f` continue vers `0x1299` (« presque... »).
+
+Attention au sens : le C dit `if (decoy_check(buf)) { puts("presque..."); }`. La branche `t` du
+graphe correspond donc au **`else`** du C, et `f` au corps du `if`. gcc teste la négation pour
+garder le cas courant en *fall-through* : ne jamais lire `t` comme « le `if` est vrai ».
 
 Le graphe rend visible en un coup d'œil ce que le listing cache : trois issues (`presque...`,
 `bravo`, `non`) et **deux fonctions de vérification** appelées successivement (`0x1189` puis
