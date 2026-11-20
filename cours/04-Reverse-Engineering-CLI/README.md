@@ -136,8 +136,8 @@ sudo apt install -y rizin        # ou : git clone https://github.com/rizinorg/ri
 | 4.2 | [Anatomie ELF et inspection des symboles](02-anatomie-elf-et-symboles.md) | en-tête, segments, sections, `nm`, stripped vs statique | comparer 3 compilations du même code |
 | 4.3 | Assembleur x86-64 appliqué au reverse | registres, conventions d'appel, comparaisons, boucles | lire la fonction `check` à la main |
 | 4.4 | Désassemblage et graphe en CLI | `r2`/`rizin`, `afl`, `pdf`, `VV`, renommage, xrefs | cartographier un crackme dans r2 |
-| 4.5 | Analyse dynamique et débogage CLI | `gdb`, `pwndbg`, `strace`, `ltrace`, breakpoints conditionnels | retrouver le mot de passe en mémoire |
-| 4.6 | Décompilation CLI, patching et solveurs | `pdg`/`r2dec`, `objcopy`, `dd`, `z3` | patcher un test et résoudre par z3 |
+| 4.5 | [Analyse dynamique et débogage CLI](05-analyse-dynamique-gdb-strace.md) | `strace`, `ltrace`, `gdb` en `-batch`, watchpoints, PIE, patch en mémoire | retrouver le mot de passe en mémoire |
+| 4.6 | [Décompilation, patching et solveurs](06-decompilation-cli-patching-z3.md) | `pdc`/`pdg`, `r2 -w`, `patchelf`, `r2pipe`, `z3`, `angr` | patcher un test et résoudre par z3 |
 | 4.7 | Anti-debug, binaires strippés et obfuscation | `ptrace`, `LD_PRELOAD`, packing, code mort, string encryption | désosser un binaire qui se défend |
 | 4.8 | Méthodologie complète et autres formats CLI | PE, Mach-O, .NET, Python compilé, firmware, arbre de décision | crackme complet de bout en bout |
 
@@ -152,8 +152,8 @@ commandes réelles, tableau de synthèse, pièges, exercice corrigé.
 | 4.2 Anatomie ELF et symboles | [02 — Anatomie ELF et symboles](02-anatomie-elf-et-symboles.md) | rédigée |
 | 4.3 Assembleur x86-64 | [03 — Assembleur x86-64](03-assembleur-x86-64.md) | rédigée |
 | 4.4 Désassemblage et graphe en CLI | [04 — Désassemblage radare2 / rizin](04-desassemblage-radare2-rizin.md) | rédigée |
-| 4.5 Analyse dynamique et débogage | — | à venir |
-| 4.6 Décompilation, patching, solveurs | — | à venir |
+| 4.5 Analyse dynamique et débogage | [05 — Analyse dynamique : strace, ltrace, gdb](05-analyse-dynamique-gdb-strace.md) | rédigée |
+| 4.6 Décompilation, patching, solveurs | [06 — Décompilation, patching et solveurs](06-decompilation-cli-patching-z3.md) | rédigée |
 | 4.7 Anti-analyse et obfuscation | — | à venir |
 | 4.8 Méthodologie et autres formats | — | à venir |
 
@@ -170,7 +170,8 @@ commandes réelles, tableau de synthèse, pièges, exercice corrigé.
 ## Outils
 
 `file` · `strings` · `xxd` · `readelf` · `objdump` · `nm` · `binwalk` · `upx` · `strace` ·
-`ltrace` · `gdb` (+ `pwndbg`/`gef`) · `radare2`/`rizin` · `z3` · `patchelf`
+`ltrace` · `gdb` (+ `pwndbg`/`gef`) · `radare2`/`rizin` (+ `pdc`/`pdg`) · `patchelf` ·
+`r2pipe` · `z3` · `angr`
 
 ## Ressources
 

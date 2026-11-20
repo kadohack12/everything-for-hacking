@@ -11,5 +11,7 @@ e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  cours/03-Web-O
 a43286a183a11d5b0e37049df7fae696f2972c6b94bf70dbce9029ce1d2b2fab  cours/04-Reverse-Engineering-CLI/02-anatomie-elf-et-symboles.md
 3a9cd020c4434ed16ad4a5da0cad768d390f612a1d1e73f99d818e8571f71299  cours/04-Reverse-Engineering-CLI/03-assembleur-x86-64.md
 a56683047868da3011fbaf2c116c3bd53ba567a2faf0de8835538b792a07f67c  cours/04-Reverse-Engineering-CLI/04-desassemblage-radare2-rizin.md
-743b5f04066d780ef6bf6c0d0eac1244b86ecde473f0c0a835b0a94f46a36a9d  cours/04-Reverse-Engineering-CLI/README.md
+5ddaccbdc093b9361740ad1038234865e5d7655ecefb17ce5815f2106fe70c14  cours/04-Reverse-Engineering-CLI/05-analyse-dynamique-gdb-strace.md
+7c8eeb0a26bd792bd58f28d7295b6360d24b7de1976ecdc6e1e4c5824a861bc7  cours/04-Reverse-Engineering-CLI/06-decompilation-cli-patching-z3.md
+7659055058a7e72750e75e150f1c2b34f2f7b2a95289fd70dd24d516f0222be7  cours/04-Reverse-Engineering-CLI/README.md
 ae78ff6a3d8d2db9f6634e5c50de164a9ca0a9505d9eb7610e276fab03e9386b  cours/README.md
