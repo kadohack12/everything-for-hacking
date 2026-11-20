@@ -150,8 +150,8 @@ commandes réelles, tableau de synthèse, pièges, exercice corrigé.
 | --- | --- | --- |
 | 4.1 Triage et analyse statique | [01 — Triage et analyse statique](01-triage-et-analyse-statique.md) | rédigée |
 | 4.2 Anatomie ELF et symboles | [02 — Anatomie ELF et symboles](02-anatomie-elf-et-symboles.md) | rédigée |
-| 4.3 Assembleur x86-64 | — | à venir |
-| 4.4 Désassemblage et graphe en CLI | — | à venir |
+| 4.3 Assembleur x86-64 | [03 — Assembleur x86-64](03-assembleur-x86-64.md) | rédigée |
+| 4.4 Désassemblage et graphe en CLI | [04 — Désassemblage radare2 / rizin](04-desassemblage-radare2-rizin.md) | rédigée |
 | 4.5 Analyse dynamique et débogage | — | à venir |
 | 4.6 Décompilation, patching, solveurs | — | à venir |
 | 4.7 Anti-analyse et obfuscation | — | à venir |
