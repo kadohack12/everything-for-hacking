@@ -70,6 +70,19 @@ def validate(writeup, root: Path) -> list[str]:
             "(ex. nom-machine, a-laise)"
         )
 
+    if writeup.platform == "autres":
+        # Section ouverte : le champ `platform` est libre (PicoCTF, PortSwigger, 404CTF 2025…).
+        if len(writeup.parts) != 2:
+            problems.append(
+                "arborescence : attendu autres/<plateforme>/<nom-du-challenge>/, "
+                f"trouvé {'/'.join(writeup.parts)}/"
+            )
+        elif not SLUG_RE.match(writeup.parts[0]):
+            problems.append(
+                f"dossier de plateforme « {writeup.parts[0]} » : kebab-case minuscule attendu "
+                "(ex. picoctf, 404ctf-2025)"
+            )
+
     expected = EXPECTED_LAYOUT.get(writeup.platform)
     if expected:
         if writeup.parts[0] != expected[0]:
@@ -140,7 +153,7 @@ def main(argv: list[str] | None = None) -> int:
         problems = validate(writeup, root)
         if problems:
             failures[str(writeup.path.relative_to(root))] = problems
-        if writeup.platform not in EXPECTED_LAYOUT:
+        if writeup.platform not in EXPECTED_LAYOUT and writeup.platform != "autres":
             warnings.append(
                 f"{writeup.path.relative_to(root)} : plateforme « {writeup.platform} » "
                 "non reconnue (l'index utilisera les colonnes par défaut)"

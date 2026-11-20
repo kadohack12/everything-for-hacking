@@ -52,6 +52,15 @@ COLUMNS_BY_PLATFORM = {
         ("Date", "date"),
         ("Writeup", "link"),
     ],
+    "autres": [
+        ("Plateforme / CTF", "platform"),
+        ("Challenge", "title"),
+        ("Catégorie", "category"),
+        ("Difficulté", "difficulty"),
+        ("Auteur", "author"),
+        ("Date", "date"),
+        ("Writeup", "link"),
+    ],
 }
 DEFAULT_COLUMNS = [
     ("Nom", "title"),

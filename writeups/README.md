@@ -46,6 +46,19 @@ ci-dessous avec son auteur.
 
 <!-- INDEX:END:hackropole.fr -->
 
+### Autres plateformes et CTFs
+
+PicoCTF, PortSwigger, OverTheWire, VulnHub, CTFs archivés… Voir
+[`autres/README.md`](autres/README.md) pour les règles : pas de CTF en cours, pas de Root-Me.
+
+<!-- INDEX:START:autres -->
+
+| Plateforme / CTF | Challenge | Catégorie | Difficulté | Auteur | Date | Writeup |
+| --- | --- | --- | --- | --- | --- | --- |
+| _aucun writeup publié pour le moment_ |  |  |  |  |  |  |
+
+<!-- INDEX:END:autres -->
+
 ## Comment est organisé un writeup
 
 ```text

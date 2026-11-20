@@ -5,12 +5,18 @@ Pose les questions (plateforme, catégorie, nom, difficulté, édition/OS, auteu
 convertit le nom en kebab-case, copie `writeups/_template/` et pré-remplit le
 frontmatter YAML (date du jour, `author`, `status: draft`).
 
+La plateforme `autres` (PicoCTF, PortSwigger, OverTheWire, 404CTF…) demande en plus
+le nom de la plateforme ou du CTF, qui devient `writeups/autres/<slug>/<challenge>/`.
+
 Usage interactive :
     python3 scripts/new_writeup.py
 
 Usage non interactive (scripts, tests) :
     python3 scripts/new_writeup.py --platform hackthebox --name "Blue" \
         --difficulty Easy --extra Windows --author "Kadohack12"
+
+    python3 scripts/new_writeup.py --platform autres --platform-name "PicoCTF" \
+        --category web --name "Insp3ct0r" --author "Kadohack12"
 
 Bibliothèque standard uniquement.
 """
@@ -57,8 +63,28 @@ PLATFORMS = {
         "extra_default": "2025",
         "difficulty_default": "Intro",
     },
+    "autres": {
+        "label": None,  # demandé : PicoCTF, PortSwigger, 404CTF 2025…
+        "base": "writeups/autres",
+        "category": None,
+        "extra_key": None,
+        "extra_label": None,
+        "extra_default": "",
+        "difficulty_default": "Easy",
+    },
 }
 HACKROPOLE_CATEGORIES = ("crypto", "web", "reverse", "pwn", "forensics", "hardware", "misc")
+OTHER_CATEGORIES = (
+    "web",
+    "crypto",
+    "reverse",
+    "pwn",
+    "forensics",
+    "misc",
+    "osint",
+    "stegano",
+    "hardware",
+)
 IMAGE_LINE_RE = re.compile(r"^!\[([^\]]*)\]\(assets/[^)]*\)\s*$", re.MULTILINE)
 NO_INPUT = False
 
@@ -128,7 +154,10 @@ def build_frontmatter(meta: dict) -> str:
         f'title: "{meta["title"]}"',
         f'platform: "{meta["platform"]}"',
         f'category: "{meta["category"]}"',
-        f'{meta["extra_key"]}: "{meta["extra"]}"',
+    ]
+    if meta.get("extra_key"):
+        lines.append(f'{meta["extra_key"]}: "{meta["extra"]}"')
+    lines += [
         f'difficulty: "{meta["difficulty"]}"',
         f'date: {meta["date"]}',
         f'author: "{meta["author"]}"',
@@ -142,7 +171,8 @@ def build_frontmatter(meta: dict) -> str:
 def build_body(template_text: str, meta: dict) -> str:
     parts = template_text.split("---", 2)
     body = parts[2].lstrip("\n") if len(parts) == 3 else template_text
-    heading = f'# {meta["title"]} — {meta["platform"]} ({meta["extra"]}, {meta["difficulty"]})'
+    detail = meta.get("extra") or meta.get("category") or ""
+    heading = f'# {meta["title"]} — {meta["platform"]} ({detail}, {meta["difficulty"]})'
     body = re.sub(r"^# .*$", heading, body, count=1, flags=re.MULTILINE)
     # Les captures du modèle n'existent pas encore : TODO plutôt que liens morts.
     body = IMAGE_LINE_RE.sub(lambda m: f"[TODO: capture — {m.group(1)}]", body)
@@ -154,7 +184,8 @@ def main(argv: list[str] | None = None) -> int:
         description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
     )
     parser.add_argument("--platform", choices=tuple(PLATFORMS), help="plateforme")
-    parser.add_argument("--category", help="catégorie Hackropole (crypto, web…)")
+    parser.add_argument("--platform-name", help="plateforme ou CTF (section autres : PicoCTF…)")
+    parser.add_argument("--category", help="catégorie (crypto, web, reverse…)")
     parser.add_argument("--name", help="nom du challenge ou de la machine")
     parser.add_argument("--difficulty", help="difficulté (Intro, Easy, Medium…)")
     parser.add_argument("--extra", help="système (os) ou édition FCSC")
@@ -177,10 +208,27 @@ def main(argv: list[str] | None = None) -> int:
     platform = args.platform or ask("Plateforme", "hackthebox", tuple(PLATFORMS))
     spec = PLATFORMS[platform]
 
-    if platform == "hackropole":
-        category = args.category or ask("Catégorie", HACKROPOLE_CATEGORIES[0], HACKROPOLE_CATEGORIES)
-        if category not in HACKROPOLE_CATEGORIES:
-            print(f"❌ Catégorie inconnue : {category}", file=sys.stderr)
+    platform_label = spec["label"]
+    if platform == "autres":
+        platform_label = (
+            args.platform_name
+            or ask("Plateforme ou CTF (PicoCTF, PortSwigger, 404CTF 2025…)")
+        ).strip()
+        if not slugify(platform_label):
+            print("❌ Nom de plateforme invalide (lettres/chiffres attendus).", file=sys.stderr)
+            return 1
+
+    categories = {
+        "hackropole": HACKROPOLE_CATEGORIES,
+        "autres": OTHER_CATEGORIES,
+    }.get(platform)
+    if categories:
+        category = args.category or ask("Catégorie", categories[0], categories)
+        if category not in categories:
+            print(
+                f"❌ Catégorie inconnue : {category} (attendu : {', '.join(categories)})",
+                file=sys.stderr,
+            )
             return 1
     else:
         category = spec["category"]
@@ -192,11 +240,18 @@ def main(argv: list[str] | None = None) -> int:
         return 1
 
     difficulty = args.difficulty or ask("Difficulté", spec["difficulty_default"])
-    extra = args.extra or ask(spec["extra_label"], spec["extra_default"])
+    extra = ""
+    if spec["extra_key"]:
+        extra = args.extra or ask(spec["extra_label"], spec["extra_default"])
     author = args.author or ask("Auteur (ton nom ou pseudo)", git_user_name() or "Anonyme")
     github = args.github if args.github is not None else ask_optional("Login GitHub (optionnel)")
 
-    relative = Path(spec["base"]) / (category if platform == "hackropole" else "") / slug
+    if platform == "autres":
+        relative = Path(spec["base"]) / slugify(platform_label) / slug
+    elif platform == "hackropole":
+        relative = Path(spec["base"]) / category / slug
+    else:
+        relative = Path(spec["base"]) / slug
     target = root / relative
     if target.exists():
         print(f"❌ Le dossier existe déjà : {relative}", file=sys.stderr)
@@ -204,7 +259,7 @@ def main(argv: list[str] | None = None) -> int:
 
     meta = {
         "title": name,
-        "platform": spec["label"],
+        "platform": platform_label,
         "category": category,
         "extra_key": spec["extra_key"],
         "extra": extra,

@@ -9,6 +9,8 @@ Dépôt **collaboratif** de writeups et de cours de cybersécurité :
 
 - **[`writeups/`](writeups/README.md)** — solutions détaillées de machines et de challenges CTF,
   ouvertes à toutes les contributions : ajoute le tien, il apparaît dans l'index avec ton nom.
+  Quatre sections : [Hack The Box](writeups/hackthebox/), [TryHackMe](writeups/tryhackme/),
+  [Hackropole](writeups/hackropole.fr/) et [autres plateformes / CTFs](writeups/autres/).
 - **[`cours/`](cours/README.md)** — notes de cours structurées (réseau, Linux, web).
   Espace **protégé** : les corrections passent par une issue, pas par une PR.
 
@@ -23,6 +25,7 @@ Tout est en Markdown, lisible directement sur GitHub, et les captures d'écran s
 | [`writeups/hackthebox/`](writeups/hackthebox/) | Machines Hack The Box | [Machines/](writeups/hackthebox/Machines/) |
 | [`writeups/tryhackme/`](writeups/tryhackme/) | Rooms TryHackMe | [Rooms/](writeups/tryhackme/Rooms/) |
 | [`writeups/hackropole.fr/`](writeups/hackropole.fr/) | Challenges Hackropole (FCSC) | [Challenges/](writeups/hackropole.fr/Challenges/) |
+| [`writeups/autres/`](writeups/autres/) | PicoCTF, PortSwigger, OverTheWire, VulnHub, CTFs archivés | [autres/README.md](writeups/autres/README.md) |
 | [`cours/`](cours/README.md) | Programme et notes de cours (protégé) | [cours/README.md](cours/README.md) |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | Comment contribuer, structure, frontmatter | — |
 
@@ -41,8 +44,10 @@ Tout est en Markdown, lisible directement sur GitHub, et les captures d'écran s
 │   │   └── Machines/<nom>/{README.md, assets/}
 │   ├── tryhackme/
 │   │   └── Rooms/<nom>/{README.md, assets/}
-│   └── hackropole.fr/
-│       └── Challenges/<catégorie>/<nom>/{README.md, assets/}
+│   ├── hackropole.fr/
+│   │   └── Challenges/<catégorie>/<nom>/{README.md, assets/}
+│   └── autres/                # PicoCTF, PortSwigger, 404CTF… (épreuves terminées)
+│       └── <plateforme>/<nom-du-challenge>/{README.md, assets/}
 ├── cours/                     # protégé : mainteneurs uniquement
 │   ├── README.md              # programme du cours
 │   ├── 01-Reseau-Bases/

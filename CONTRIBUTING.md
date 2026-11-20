@@ -31,7 +31,8 @@ GitHub gratuit.
 1. Ouvre le dossier de la plateforme :
    [Hack The Box](writeups/hackthebox/Machines/) ·
    [TryHackMe](writeups/tryhackme/Rooms/) ·
-   [Hackropole](writeups/hackropole.fr/Challenges/).
+   [Hackropole](writeups/hackropole.fr/Challenges/) ·
+   [autres plateformes / CTFs](writeups/autres/).
 2. Bouton **Add file** → **Create new file**.
 3. Dans le champ du nom, tape le chemin complet — chaque `/` crée un dossier :
 
@@ -113,10 +114,30 @@ Catégories Hackropole : `crypto`, `web`, `reverse`, `pwn`, `forensics`, `hardwa
 Pour une nouvelle plateforme, crée `writeups/<plateforme>/<type>/<nom>/` et signale-le dans la PR
 (l'index utilisera des colonnes par défaut).
 
+### Plateformes et CTFs acceptés
+
+Les trois plateformes principales ont leur dossier. Tout le reste va dans
+[`writeups/autres/`](writeups/autres/), avec l'arborescence
+`autres/<plateforme>/<nom-du-challenge>/` :
+
+| Bienvenu | Refusé |
+| --- | --- |
+| PicoCTF, PortSwigger, OverTheWire, VulnHub | **Tout CTF encore en cours** |
+| CTFs archivés (404CTF, épreuves terminées de CTFtime…) | Toute plateforme qui **interdit la publication** de solutions |
+| Environnements vulnérables à installer soi-même | Root-Me (ses règles l'interdisent, même après clôture) |
+
+La règle est simple : **l'épreuve doit être terminée, et la plateforme doit autoriser les
+writeups.** Publier la solution d'un CTF en cours gâche le jeu des autres participants ; publier
+celle d'une plateforme qui l'interdit expose le dépôt à un retrait. En cas de doute, ouvre une
+issue **Suggérer un writeup ou un cours** avant de rédiger.
+
 ## 3. Nommage (recommandé)
 
 - Dossier en **kebab-case minuscule** : `blue`, `a-laise`, `pwn-me-01`.
   Pas d'espace, pas d'accent, pas de majuscule, pas d'underscore : ces noms deviennent des URLs.
+- Dans `autres/`, le premier niveau est la plateforme en kebab-case (`picoctf`, `portswigger`,
+  `404ctf-2025`) : le vrai nom (`PicoCTF`, `404CTF 2025`) va dans le champ `platform` du
+  frontmatter, c'est lui qui s'affiche dans l'index.
 - Un dossier = **un** writeup = **un** `README.md`.
 - Les captures vont dans `assets/`, nommées et numérotées : `01-nmap.png`, `02-exploit.png`.
 - Pas de fichier en vrac à la racine d'un writeup (scripts, dumps) : mets-les dans `assets/`
