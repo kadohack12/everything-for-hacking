@@ -16,9 +16,18 @@ Machines résolues sur [Hack The Box](https://www.hackthebox.com/), classées da
 
 ## Ajouter une machine
 
+Depuis la **racine du dépôt** :
+
 ```bash
-cp -r ../_template Machines/NomMachine
-python3 ../../scripts/update_index.py
+python3 scripts/new_writeup.py     # assistant : pose les questions et crée le dossier
+```
+
+Ou à la main :
+
+```bash
+cp -r writeups/_template writeups/hackthebox/Machines/nom-machine
+$EDITOR writeups/hackthebox/Machines/nom-machine/README.md
+python3 scripts/update_index.py
 ```
 
 Chaque dossier contient le writeup (`README.md`) et ses captures (`assets/`).

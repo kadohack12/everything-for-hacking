@@ -27,9 +27,18 @@ Challenges de [hackropole.fr](https://hackropole.fr/), la plateforme d'entraîne
 
 ## Ajouter un challenge
 
+Depuis la **racine du dépôt** :
+
 ```bash
-cp -r ../../_template Challenges/crypto/NomChallenge
-python3 ../../../scripts/update_index.py
+python3 scripts/new_writeup.py     # assistant : pose les questions et crée le dossier
+```
+
+Ou à la main :
+
+```bash
+cp -r writeups/_template writeups/hackropole.fr/Challenges/crypto/nom-challenge
+$EDITOR writeups/hackropole.fr/Challenges/crypto/nom-challenge/README.md
+python3 scripts/update_index.py
 ```
 
 Nommage : `Challenges/<catégorie>/<nom-du-challenge>/`. Le champ `platform` du frontmatter vaut

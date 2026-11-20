@@ -66,10 +66,18 @@ Le `README.md` suit le modèle [`_template/README.md`](_template/README.md) :
 
 ## Ajouter le tien
 
+Depuis la **racine du dépôt** :
+
 ```bash
-cp -r _template hackthebox/Machines/nom-machine     # kebab-case minuscule
-$EDITOR hackthebox/Machines/nom-machine/README.md
-python3 ../scripts/update_index.py                  # depuis la racine : python3 scripts/update_index.py
+python3 scripts/new_writeup.py     # assistant : questions + frontmatter pré-rempli
+```
+
+Ou à la main :
+
+```bash
+cp -r writeups/_template writeups/hackthebox/Machines/nom-machine
+$EDITOR writeups/hackthebox/Machines/nom-machine/README.md
+python3 scripts/update_index.py
 ```
 
 Le frontmatter démarre en `status: draft` : remplis `author` (et `author_github` si tu veux le
