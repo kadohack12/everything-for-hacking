@@ -7,4 +7,7 @@ e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  cours/01-Resea
 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  cours/02-Linux-Privilege-Escalation/assets/.gitkeep
 b309cda3f63067cc8258b53c0e21654e354acfcef317cabf64d77f2dcaf107e1  cours/03-Web-OWASP/README.md
 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  cours/03-Web-OWASP/assets/.gitkeep
-66ec09e6dfebc212ed2d644e807209cae116c5c1e90c4737bcc07975c5392faf  cours/README.md
+3d6f921dbd706410cb2c034cc47d4f10385d71ab402865f32eefcf3f507b5707  cours/04-Reverse-Engineering-CLI/01-triage-et-analyse-statique.md
+a43286a183a11d5b0e37049df7fae696f2972c6b94bf70dbce9029ce1d2b2fab  cours/04-Reverse-Engineering-CLI/02-anatomie-elf-et-symboles.md
+d9cec351b8538676fe47267ba9f1ac9b53ba3969e63f8d5f7eee4a93c98a2166  cours/04-Reverse-Engineering-CLI/README.md
+ae78ff6a3d8d2db9f6634e5c50de164a9ca0a9505d9eb7610e276fab03e9386b  cours/README.md

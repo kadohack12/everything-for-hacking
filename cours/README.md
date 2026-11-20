@@ -20,6 +20,7 @@ Chaque module a son `README.md` (plan + notes) et un dossier `assets/` pour les 
 | 01 | [Réseau — Bases](01-Reseau-Bases/README.md) | Lire, comprendre et capturer du trafic | 🚧 en cours |
 | 02 | [Linux — Privilege Escalation](02-Linux-Privilege-Escalation/README.md) | Passer d'un shell utilisateur à root | 🚧 en cours |
 | 03 | [Web — OWASP](03-Web-OWASP/README.md) | Identifier et exploiter les 10 risques OWASP | 🚧 en cours |
+| 04 | [Reverse Engineering — CLI](04-Reverse-Engineering-CLI/README.md) | Comprendre un binaire inconnu, sans interface graphique | 🚧 en cours |
 
 Légende : 🚧 en cours · ✅ terminé · ⬜ à venir
 
@@ -42,4 +43,6 @@ Légende : 🚧 en cours · ✅ terminé · ⬜ à venir
 
 - Une VM Linux (Debian/Parrot/Kali) et une VM Windows pour les labs croisés.
 - `Wireshark`, `nmap`, `netcat`, `curl`, `Burp Suite Community`.
+- Pour le module 04 : `binutils`, `gdb`, `strace`, `ltrace`, `radare2` — tout en ligne de
+  commande, utilisable en SSH (voir la boîte à outils du [module](04-Reverse-Engineering-CLI/README.md#boîte-à-outils-cli)).
 - Un dossier de labs jetables — jamais de test hors périmètre autorisé.

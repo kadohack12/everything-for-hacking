@@ -11,7 +11,8 @@ Dépôt **collaboratif** de writeups et de cours de cybersécurité :
   ouvertes à toutes les contributions : ajoute le tien, il apparaît dans l'index avec ton nom.
   Quatre sections : [Hack The Box](writeups/hackthebox/), [TryHackMe](writeups/tryhackme/),
   [Hackropole](writeups/hackropole.fr/) et [autres plateformes / CTFs](writeups/autres/).
-- **[`cours/`](cours/README.md)** — notes de cours structurées (réseau, Linux, web).
+- **[`cours/`](cours/README.md)** — notes de cours structurées (réseau, Linux, web, reverse
+  engineering en ligne de commande).
   Espace **protégé** : les corrections passent par une issue, pas par une PR.
 
 Tout est en Markdown, lisible directement sur GitHub, et les captures d'écran sont versionnées
@@ -52,7 +53,8 @@ Tout est en Markdown, lisible directement sur GitHub, et les captures d'écran s
 │   ├── README.md              # programme du cours
 │   ├── 01-Reseau-Bases/
 │   ├── 02-Linux-Privilege-Escalation/
-│   └── 03-Web-OWASP/
+│   ├── 03-Web-OWASP/
+│   └── 04-Reverse-Engineering-CLI/   # tout en CLI, utilisable en SSH
 ├── scripts/                   # automatisations (Python, sans dépendance)
 │   ├── new_writeup.py         # assistant : crée un writeup complet
 │   ├── update_index.py        # régénère les tableaux d'index
