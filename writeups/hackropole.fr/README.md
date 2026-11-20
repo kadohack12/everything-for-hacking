@@ -21,6 +21,7 @@ Challenges de [hackropole.fr](https://hackropole.fr/), la plateforme d'entraîne
 
 | Challenge | Catégorie | Édition | Auteur | Date | Writeup |
 | --- | --- | --- | --- | --- | --- |
+| AdveRSArial Crypto (Infant) | crypto | 2024 | [Kadohack12](https://github.com/kadohack12) | 2026-11-20 | [Writeup](Challenges/crypto/adversarial-crypto-infant/) |
 | À l'aise | crypto | 2022 | [Kadohack12](https://github.com/kadohack12) | 2026-11-20 | [Writeup](Challenges/crypto/a-laise/) |
 
 <!-- INDEX:END -->
