@@ -44,11 +44,19 @@ Tout est en Markdown, lisible directement sur GitHub, et les captures d'écran s
 │       └── Challenges/
 │           ├── crypto/  web/  reverse/  pwn/
 │           └── forensics/  hardware/  misc/
-└── cours/
-    ├── README.md              # programme du cours
-    ├── 01-Reseau-Bases/
-    ├── 02-Linux-Privilege-Escalation/
-    └── 03-Web-OWASP/
+├── cours/
+│   ├── README.md              # programme du cours
+│   ├── 01-Reseau-Bases/
+│   ├── 02-Linux-Privilege-Escalation/
+│   └── 03-Web-OWASP/
+├── scripts/                   # automatisations (Python, sans dépendance)
+│   ├── update_index.py        # régénère les tableaux d'index
+│   ├── check_links.py         # liens relatifs et images
+│   ├── check_secrets.py       # flags en clair et credentials
+│   ├── check_drafts.py        # writeups non publiés
+│   └── writeups_lib.py        # code partagé
+├── .github/workflows/ci.yml   # CI : liens, secrets, brouillons, index
+└── LICENSE                    # CC BY-SA 4.0
 ```
 
 ## Conventions
@@ -66,7 +74,22 @@ Tout est en Markdown, lisible directement sur GitHub, et les captures d'écran s
 ```bash
 cp -r writeups/_template writeups/hackthebox/Machines/NomMachine
 $EDITOR writeups/hackthebox/Machines/NomMachine/README.md
+python3 scripts/update_index.py    # publie le writeup dans les index
 ```
+
+## Vérifications automatiques
+
+La CI (`.github/workflows/ci.yml`) tourne sur chaque push et PR vers `main` :
+
+| Contrôle | Ce qui est vérifié | En local |
+| --- | --- | --- |
+| Liens & images | chaque lien relatif et image locale existe (hors `_template/`) | `python3 scripts/check_links.py` |
+| Flags & secrets | aucun `HTB{…}`, `THM{…}`, `FCSC{…}`, `CTF{…}`, clé privée ou `.ovpn` | `python3 scripts/check_secrets.py` |
+| Writeups publiés | aucun `status: draft` sur `main` (avertissement en PR) | `python3 scripts/check_drafts.py` |
+| Index à jour | les tableaux ont été régénérés | `python3 scripts/update_index.py --check` |
+
+Les scripts n'utilisent que la bibliothèque standard Python 3. Un faux positif se neutralise
+avec un commentaire `secret-scan:ignore` sur la ligne concernée.
 
 ## Outils utilisés
 
@@ -83,4 +106,5 @@ Aucune cible réelle, aucun système tiers. Le contenu est publié à but pédag
 
 ## Licence
 
-Contenu sous [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.fr) sauf mention contraire.
+Contenu sous [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.fr) sauf mention contraire —
+texte intégral dans [`LICENSE`](LICENSE). Réutilisation libre avec attribution et partage à l'identique.
