@@ -1,9 +1,13 @@
 # Writeups
 
-Retour à l'[accueil](../README.md) · Voir les [cours](../cours/README.md)
+Retour à l'[accueil](../README.md) · Voir les [cours](../cours/README.md) ·
+[Comment contribuer](../CONTRIBUTING.md)
 
 Solutions détaillées, étape par étape : reconnaissance, exploitation, élévation de privilèges, leçons.
 L'objectif n'est pas de donner le flag mais de montrer **le raisonnement** et les impasses.
+
+Ce dossier est **ouvert aux contributions** : chaque writeup publié apparaît dans les tableaux
+ci-dessous avec son auteur.
 
 ## Index
 
@@ -15,9 +19,9 @@ L'objectif n'est pas de donner le flag mais de montrer **le raisonnement** et le
 
 <!-- INDEX:START:hackthebox -->
 
-| Machine | OS | Difficulté | Date | Writeup |
-| --- | --- | --- | --- | --- |
-| _aucun writeup publié pour le moment_ |  |  |  |  |
+| Machine | OS | Difficulté | Auteur | Date | Writeup |
+| --- | --- | --- | --- | --- | --- |
+| _aucun writeup publié pour le moment_ |  |  |  |  |  |
 
 <!-- INDEX:END:hackthebox -->
 
@@ -25,9 +29,9 @@ L'objectif n'est pas de donner le flag mais de montrer **le raisonnement** et le
 
 <!-- INDEX:START:tryhackme -->
 
-| Room | Thème | Difficulté | Date | Writeup |
-| --- | --- | --- | --- | --- |
-| _aucun writeup publié pour le moment_ |  |  |  |  |
+| Room | Thème | Difficulté | Auteur | Date | Writeup |
+| --- | --- | --- | --- | --- | --- |
+| _aucun writeup publié pour le moment_ |  |  |  |  |  |
 
 <!-- INDEX:END:tryhackme -->
 
@@ -35,23 +39,23 @@ L'objectif n'est pas de donner le flag mais de montrer **le raisonnement** et le
 
 <!-- INDEX:START:hackropole.fr -->
 
-| Challenge | Catégorie | Édition | Date | Writeup |
-| --- | --- | --- | --- | --- |
-| À l'aise | crypto | 2022 | 2026-11-20 | [Writeup](hackropole.fr/Challenges/crypto/a-laise/) |
+| Challenge | Catégorie | Édition | Auteur | Date | Writeup |
+| --- | --- | --- | --- | --- | --- |
+| À l'aise | crypto | 2022 | [Kadohack12](https://github.com/kadohack12) | 2026-11-20 | [Writeup](hackropole.fr/Challenges/crypto/a-laise/) |
 
 <!-- INDEX:END:hackropole.fr -->
 
 ## Comment est organisé un writeup
 
 ```text
-Plateforme/Machines/NomMachine/
+<plateforme>/<type>/<nom>/
 ├── README.md      # le writeup complet
 └── assets/        # 01-nmap.png, 02-exploit.png, 03-flag.png…
 ```
 
 Le `README.md` suit le modèle [`_template/README.md`](_template/README.md) :
 
-1. **En-tête YAML** — métadonnées (plateforme, OS, difficulté, tags, statut).
+1. **En-tête YAML** — métadonnées obligatoires (plateforme, catégorie, difficulté, date, auteur, statut).
 2. **TL;DR** — le chemin d'attaque en 3 lignes.
 3. **Reconnaissance** — scan réseau, services, versions.
 4. **Énumération** — web, SMB, DNS… et ce qu'on en déduit.
@@ -60,21 +64,24 @@ Le `README.md` suit le modèle [`_template/README.md`](_template/README.md) :
 7. **Flags** — `user.txt` / `root.txt` (tronqués).
 8. **Leçons** — ce que je referais, ce que j'ai appris.
 
-## Créer un nouveau writeup
+## Ajouter le tien
 
 ```bash
-cp -r _template hackthebox/Machines/NomMachine
-python3 ../scripts/update_index.py      # depuis writeups/, ou depuis la racine : python3 scripts/update_index.py
+cp -r _template hackthebox/Machines/nom-machine     # kebab-case minuscule
+$EDITOR hackthebox/Machines/nom-machine/README.md
+python3 ../scripts/update_index.py                  # depuis la racine : python3 scripts/update_index.py
 ```
 
-Puis renommer les captures dans `assets/` et compléter le `README.md`.
-Le frontmatter démarre en `status: draft` : l'index ne l'affiche qu'une fois passé en `published`.
+Le frontmatter démarre en `status: draft` : remplis `author` (et `author_github` si tu veux le
+lien vers ton profil), puis passe en `published` quand le writeup est prêt. Détail des champs et
+checklist complète : [`CONTRIBUTING.md`](../CONTRIBUTING.md).
 
 ## Règles
 
+- **Nom de dossier** : kebab-case minuscule, sans accent ni espace (`blue`, `a-laise`).
 - **Pas de spoiler gratuit** : le TL;DR reste vague, les flags sont tronqués.
+- **Aucun flag en clair** : `FCSC{...}`, `HTB{...}` — la CI refuse les flags complets.
 - **Reproductibilité** : les commandes sont complètes et copiables.
 - **Honnêteté** : les indices, les erreurs et les chemins abandonnés sont mentionnés.
-- **Pas de contenu illégal** : uniquement des cibles autorisées (labs, plateformes d'entraînement).
 - **`draft` tant que la machine est active** : la CI refuse un `status: draft` sur `main`.
-- **Aucun flag en clair** : la CI bloque `HTB{…}`, `THM{…}`, `FCSC{…}`, `CTF{…}` et les clés privées.
+- **Pas de contenu illégal** : uniquement des cibles autorisées (labs, plateformes d'entraînement).

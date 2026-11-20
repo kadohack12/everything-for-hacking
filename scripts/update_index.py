@@ -32,6 +32,7 @@ COLUMNS_BY_PLATFORM = {
         ("Machine", "title"),
         ("OS", "os"),
         ("Difficulté", "difficulty"),
+        ("Auteur", "author"),
         ("Date", "date"),
         ("Writeup", "link"),
     ],
@@ -39,6 +40,7 @@ COLUMNS_BY_PLATFORM = {
         ("Room", "title"),
         ("Thème", "category"),
         ("Difficulté", "difficulty"),
+        ("Auteur", "author"),
         ("Date", "date"),
         ("Writeup", "link"),
     ],
@@ -46,6 +48,7 @@ COLUMNS_BY_PLATFORM = {
         ("Challenge", "title"),
         ("Catégorie", "category"),
         ("Édition", "edition"),
+        ("Auteur", "author"),
         ("Date", "date"),
         ("Writeup", "link"),
     ],
@@ -54,6 +57,7 @@ DEFAULT_COLUMNS = [
     ("Nom", "title"),
     ("Catégorie", "category"),
     ("Difficulté", "difficulty"),
+    ("Auteur", "author"),
     ("Date", "date"),
     ("Writeup", "link"),
 ]
@@ -78,6 +82,10 @@ def cell(writeup: Writeup, key: str, readme: Path) -> str:
         return escape_cell(writeup.title)
     if key == "category":
         return escape_cell(writeup.category or "—")
+    if key == "author":
+        author = escape_cell(writeup.field("author"))
+        login = str(writeup.meta.get("author_github") or "").strip().lstrip("@")
+        return f"[{author}](https://github.com/{login})" if login else author
     if key == "edition":
         return escape_cell(writeup.field("edition"))
     if key == "date":

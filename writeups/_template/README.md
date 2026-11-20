@@ -1,15 +1,18 @@
 ---
-title: "NomMachine"
-platform: "Hack The Box"
-category: "Machine"
-os: "Linux"
-difficulty: "Easy"
-date: 2026-01-01
+# Métadonnées obligatoires — voir CONTRIBUTING.md
+title: "Nom de la machine"
+platform: "Hack The Box"          # doit correspondre au dossier : writeups/hackthebox/
+category: "Machine"               # Machine | Room | crypto | web | reverse | pwn | forensics | hardware | misc
+os: "Linux"                       # libre : Linux | Windows | Android | —
+difficulty: "Easy"                # libre : Intro | Easy | Medium | Hard | Insane
+date: 2026-01-01                  # AAAA-MM-JJ
+author: "Prénom Nom ou pseudo"
+# author_github: "ton-login"      # optionnel : lien vers ton profil dans l'index
 tags: [nmap, web, privesc]
-status: draft
+status: draft                     # draft tant que la machine est active, puis published
 ---
 
-# NomMachine — Hack The Box (Linux, Easy)
+# Nom de la machine — Hack The Box (Linux, Easy)
 
 > **TL;DR** — Service web vulnérable → shell `www-data` → binaire SUID maison → root.
 

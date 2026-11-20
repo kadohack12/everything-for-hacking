@@ -1,0 +1,51 @@
+name: Proposer un writeup
+description: Tu veux ajouter un writeup mais tu préfères en parler avant (ou tu ne sais pas où le placer).
+title: "[Writeup] <plateforme> — <nom>"
+labels: ["writeup"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Une PR directe est la voie normale (voir [CONTRIBUTING.md](https://github.com/kadohack12/all-tout-hack/blob/main/CONTRIBUTING.md)).
+        Cette issue sert aux cas où tu veux valider le placement ou le périmètre avant d'écrire.
+  - type: dropdown
+    id: plateforme
+    attributes:
+      label: Plateforme
+      options:
+        - Hack The Box
+        - TryHackMe
+        - Hackropole (FCSC)
+        - Autre
+    validations:
+      required: true
+  - type: input
+    id: nom
+    attributes:
+      label: Nom de la machine / du challenge
+      placeholder: Blue, a-laise, …
+    validations:
+      required: true
+  - type: input
+    id: lien
+    attributes:
+      label: Lien officiel
+      placeholder: https://…
+    validations:
+      required: false
+  - type: dropdown
+    id: statut
+    attributes:
+      label: La cible est-elle encore active ?
+      options:
+        - Non (je peux publier directement)
+        - Oui (je garderai status draft)
+    validations:
+      required: true
+  - type: textarea
+    id: plan
+    attributes:
+      label: Plan prévu
+      description: Chemin d'attaque en quelques lignes, sections que tu comptes couvrir.
+    validations:
+      required: false

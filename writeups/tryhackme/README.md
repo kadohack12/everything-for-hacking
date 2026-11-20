@@ -8,9 +8,9 @@ Rooms suivies sur [TryHackMe](https://tryhackme.com/), classées dans `Rooms/<No
 
 <!-- INDEX:START -->
 
-| Room | Thème | Difficulté | Date | Writeup |
-| --- | --- | --- | --- | --- |
-| _aucun writeup publié pour le moment_ |  |  |  |  |
+| Room | Thème | Difficulté | Auteur | Date | Writeup |
+| --- | --- | --- | --- | --- | --- |
+| _aucun writeup publié pour le moment_ |  |  |  |  |  |
 
 <!-- INDEX:END -->
 

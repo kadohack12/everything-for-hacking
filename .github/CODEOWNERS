@@ -1,0 +1,6 @@
+# Les cours sont un espace éditorial : toute modification demande la revue du mainteneur.
+/cours/ @kadohack12
+
+# Outillage et CI : relus par le mainteneur.
+/scripts/ @kadohack12
+/.github/ @kadohack12

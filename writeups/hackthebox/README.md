@@ -8,9 +8,9 @@ Machines résolues sur [Hack The Box](https://www.hackthebox.com/), classées da
 
 <!-- INDEX:START -->
 
-| Machine | OS | Difficulté | Date | Writeup |
-| --- | --- | --- | --- | --- |
-| _aucun writeup publié pour le moment_ |  |  |  |  |
+| Machine | OS | Difficulté | Auteur | Date | Writeup |
+| --- | --- | --- | --- | --- | --- |
+| _aucun writeup publié pour le moment_ |  |  |  |  |  |
 
 <!-- INDEX:END -->
 

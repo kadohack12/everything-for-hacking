@@ -19,9 +19,9 @@ Challenges de [hackropole.fr](https://hackropole.fr/), la plateforme d'entraîne
 
 <!-- INDEX:START -->
 
-| Challenge | Catégorie | Édition | Date | Writeup |
-| --- | --- | --- | --- | --- |
-| À l'aise | crypto | 2022 | 2026-11-20 | [Writeup](Challenges/crypto/a-laise/) |
+| Challenge | Catégorie | Édition | Auteur | Date | Writeup |
+| --- | --- | --- | --- | --- | --- |
+| À l'aise | crypto | 2022 | [Kadohack12](https://github.com/kadohack12) | 2026-11-20 | [Writeup](Challenges/crypto/a-laise/) |
 
 <!-- INDEX:END -->
 

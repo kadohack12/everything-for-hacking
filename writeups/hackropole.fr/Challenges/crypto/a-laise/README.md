@@ -5,6 +5,8 @@ category: "crypto"
 edition: "2022"
 difficulty: "Intro"
 date: 2026-11-20
+author: "Kadohack12"
+author_github: "kadohack12"
 tags: [vigenere, crypto-symetrique, python, fcsc2022]
 status: published
 source: "https://hackropole.fr/fr/challenges/crypto/fcsc2022-crypto-a-laise/"
