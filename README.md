@@ -49,6 +49,7 @@ Tout est en Markdown, lisible directement sur GitHub, et les captures d'écran s
 │   ├── 02-Linux-Privilege-Escalation/
 │   └── 03-Web-OWASP/
 ├── scripts/                   # automatisations (Python, sans dépendance)
+│   ├── new_writeup.py         # assistant : crée un writeup complet
 │   ├── update_index.py        # régénère les tableaux d'index
 │   ├── check_frontmatter.py   # conseils : structure et frontmatter
 │   ├── check_cours.py         # cours : structure + empreintes (manifeste)
@@ -58,7 +59,8 @@ Tout est en Markdown, lisible directement sur GitHub, et les captures d'écran s
 │   ├── check_cours_protection.py  # cours/ réservé aux mainteneurs
 │   └── writeups_lib.py        # code partagé
 └── .github/
-    ├── workflows/ci.yml       # CI : 6 contrôles
+    ├── workflows/ci.yml       # CI : contrôles bloquants + conseils
+    ├── workflows/update-index.yml  # régénère l'index après merge
     ├── CODEOWNERS             # revue obligatoire sur cours/
     ├── MAINTAINERS            # logins autorisés à modifier cours/
     ├── PULL_REQUEST_TEMPLATE.md
@@ -88,10 +90,14 @@ Deux niveaux : ce qui **bloque** la CI, et ce qui est **conseillé** (signalé, 
 ## Nouveau writeup en 30 secondes
 
 ```bash
+python3 scripts/new_writeup.py       # assistant : dossier + frontmatter pré-rempli
+# ou à la main
 cp -r writeups/_template writeups/hackthebox/Machines/nom-machine
-$EDITOR writeups/hackthebox/Machines/nom-machine/README.md
 python3 scripts/update_index.py      # publie le writeup dans les index
 ```
+
+Sans terminal ? Tout se fait sur GitHub.com : voir
+[« Contribuer en 2 minutes »](CONTRIBUTING.md#contribuer-en-2-minutes-sans-terminal-100--sur-githubcom).
 
 ## Contribuer
 

@@ -1,0 +1,62 @@
+name: Améliorer un cours
+description: Signaler une erreur ou proposer un ajout dans cours/ (espace protégé, pas de PR directe).
+title: "[Cours] <module ou chapitre>"
+labels: ["cours"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        `cours/` est verrouillé : les modifications passent par une issue, pas par une PR.
+        Décris précisément ce qui est faux et la correction souhaitée, avec une source si possible.
+  - type: dropdown
+    id: module
+    attributes:
+      label: Module concerné
+      options:
+        - 01 — Réseau : les bases
+        - 02 — Linux : privilèges
+        - 03 — Web : OWASP
+        - Programme général (cours/README.md)
+        - Autre / nouveau module
+    validations:
+      required: true
+  - type: input
+    id: fichier
+    attributes:
+      label: Fichier ou section
+      placeholder: cours/01-Reseau-Bases/01-modele-osi-et-tcp-ip.md, section « 4. Les protocoles clés »
+    validations:
+      required: true
+  - type: dropdown
+    id: nature
+    attributes:
+      label: Nature de la demande
+      options:
+        - Erreur factuelle
+        - Explication incomplète ou confuse
+        - Ajout de contenu
+        - Lien ou source manquante
+        - Faute de frappe / mise en forme
+    validations:
+      required: true
+  - type: textarea
+    id: probleme
+    attributes:
+      label: Ce qui pose problème
+      description: Cite le passage exact quand c'est possible.
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: Correction proposée
+      description: Le texte ou la commande de remplacement, prêt à intégrer.
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source
+      placeholder: RFC, documentation officielle, article, capture…
+    validations:
+      required: false

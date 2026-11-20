@@ -4,7 +4,7 @@ Retour à l'[accueil](../README.md) · Voir les [writeups](../writeups/README.md
 
 > **Espace protégé.** Ce dossier est un support pédagogique : il n'accepte pas de PR directe.
 > Une erreur, une imprécision, une source manquante ? Ouvre une issue
-> **« Signaler une erreur »** : la correction est relue et intégrée par un mainteneur
+> **« Améliorer un cours »** : la correction est relue et intégrée par un mainteneur
 > (voir [`CONTRIBUTING.md`](../CONTRIBUTING.md#8-cours--espace-protégé)).
 >
 > Chaque fichier est vérifié par empreinte dans [`MANIFEST.sha256`](MANIFEST.sha256) : après une

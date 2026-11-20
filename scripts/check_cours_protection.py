@@ -79,7 +79,7 @@ def main(argv: list[str] | None = None) -> int:
         print(f"   … et {len(touched) - 15} autre(s)", file=sys.stderr)
     print(
         "\n   Le dossier cours/ est réservé aux mainteneurs (voir CONTRIBUTING.md).\n"
-        "   Ouvre une issue « Proposer une correction de cours » plutôt qu'une PR directe :\n"
+        "   Ouvre une issue « Améliorer un cours » plutôt qu'une PR directe :\n"
         "   la proposition sera relue et intégrée par un mainteneur.",
         file=sys.stderr,
     )

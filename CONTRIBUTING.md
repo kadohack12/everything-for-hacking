@@ -15,10 +15,65 @@ des PR.
 | [`scripts/`](scripts/), [`.github/`](.github/) | PR bienvenue, relue par un mainteneur | décrire le besoin dans la PR |
 | `README.md` racine | mainteneur (ou PR discutée) | issue d'abord |
 
-Sommaire : [1. Récupérer](#1-récupérer-le-dépôt) · [2. Créer le writeup](#2-créer-le-writeup) ·
-[3. Nommage](#3-nommage-règles-strictes) · [4. Frontmatter](#4-frontmatter-obligatoire) ·
+Sommaire : [Sans terminal](#contribuer-en-2-minutes-sans-terminal-100--sur-githubcom) ·
+[1. Récupérer](#1-récupérer-le-dépôt) · [2. Créer le writeup](#2-créer-le-writeup) ·
+[3. Nommage](#3-nommage-recommandé) · [4. Frontmatter](#4-frontmatter-recommandé-alimente-lindex) ·
 [5. Contenu](#5-contenu-attendu) · [6. Vérifier en local](#6-vérifier-en-local) ·
 [7. Ouvrir la PR](#7-ouvrir-la-pr) · [8. Cours](#8-cours--espace-protégé) · [9. Licence](#9-licence)
+
+## Contribuer en 2 minutes sans terminal (100 % sur GitHub.com)
+
+Pas de `git`, pas de Python, pas d'installation : tout se fait dans le navigateur, avec un compte
+GitHub gratuit.
+
+### Créer un writeup
+
+1. Ouvre le dossier de la plateforme :
+   [Hack The Box](writeups/hackthebox/Machines/) ·
+   [TryHackMe](writeups/tryhackme/Rooms/) ·
+   [Hackropole](writeups/hackropole.fr/Challenges/).
+2. Bouton **Add file** → **Create new file**.
+3. Dans le champ du nom, tape le chemin complet — chaque `/` crée un dossier :
+
+   ```text
+   writeups/hackthebox/Machines/nom-machine/README.md
+   ```
+
+4. **Copie le modèle** : ouvre [`writeups/_template/README.md`](writeups/_template/README.md),
+   clique sur **Raw**, copie tout, colle dans l'éditeur.
+5. **Remplis l'en-tête** entre les deux `---` : `title`, `platform`, `category`, `difficulty`,
+   `date`, `author`, et laisse `status: draft` le temps de rédiger.
+6. **Commit changes** → **Create a new branch** → **Propose changes** : la PR s'ouvre toute seule.
+7. La CI vérifie les flags et les liens ; un mainteneur relit et merge.
+
+### Ajouter des captures
+
+GitHub ne sait pas créer un dossier vide : utilise **Add file** → **Upload files**, tape
+`writeups/hackthebox/Machines/nom-machine/assets/` dans le chemin, dépose tes images, puis
+référence-les en relatif :
+
+```markdown
+![Scan nmap](assets/01-nmap.png)
+```
+
+Évite le glisser-déposer direct dans l'éditeur de texte : GitHub insère alors un lien vers son CDN
+(`user-images.githubusercontent.com`) au lieu d'un fichier du dépôt.
+
+### Corriger un writeup existant
+
+Ouvre le fichier, clique sur le **crayon** (*Edit this file*), corrige, puis **Commit changes**.
+Pour une faute de frappe, **Propose changes** suffit ; pour un ajout de fond, crée une branche.
+
+### Pour les cours
+
+`cours/` n'accepte pas de PR. Ouvre une issue
+[**Améliorer un cours**](https://github.com/kadohack12/everything-for-hacking/issues/new?template=ameliorer-cours.yml) :
+module, fichier, ce qui est faux, correction proposée, source.
+
+### Et si je préfère l'outillage local ?
+
+Voir [2. Créer le writeup](#2-créer-le-writeup) : `python3 scripts/new_writeup.py` fait le travail
+(dossier, kebab-case, frontmatter pré-rempli).
 
 ## 1. Récupérer le dépôt
 
@@ -32,6 +87,15 @@ git switch -c writeup/hackthebox/nom-machine
 Une branche par writeup, nommée `writeup/<plateforme>/<nom>`. Pas de commit direct sur `main`.
 
 ## 2. Créer le writeup
+
+Avec l'assistant — il pose les questions, convertit le nom en kebab-case et pré-remplit le
+frontmatter (date du jour, auteur, `status: draft`) :
+
+```bash
+python3 scripts/new_writeup.py
+```
+
+Ou à la main :
 
 ```bash
 cp -r writeups/_template writeups/hackthebox/Machines/nom-machine
@@ -124,11 +188,12 @@ python3 scripts/check_links.py         # BLOQUANT : liens relatifs et images
 python3 scripts/check_frontmatter.py   # conseils : structure et frontmatter
 python3 scripts/check_drafts.py        # conseils : liste les brouillons
 python3 scripts/update_index.py        # régénère les tableaux d'index (à committer)
+python3 scripts/new_writeup.py         # assistant : crée un dossier de writeup complet
 ```
 
 Seuls les deux premiers bloquent une PR. L'index est régénéré depuis le frontmatter : si tu
-oublies `update_index.py`, la CI te le signale sans refuser la PR, et le mainteneur le
-régénérera au merge.
+oublies `update_index.py`, la CI te le signale sans refuser la PR, et le workflow
+`update-index.yml` le régénère automatiquement sur `main` après le merge.
 
 Un faux positif du scanner ? Ajoute `secret-scan:ignore` en commentaire sur la ligne concernée.
 
@@ -155,7 +220,7 @@ ou modification de `cours/`.
 `cours/` est un support pédagogique : il doit rester cohérent, sourcé et sans régression.
 C'est pourquoi il n'est **pas ouvert aux PR directes**.
 
-- Pour proposer une correction : ouvre une issue **« Signaler une erreur »** en précisant le
+- Pour proposer une correction : ouvre une issue **« Améliorer un cours »** en précisant le
   fichier, ce qui est faux, la correction et une source.
 - Le mainteneur intègre la modification lui-même (et te crédite si la contribution est
   substantielle).

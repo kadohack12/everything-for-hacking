@@ -1,0 +1,50 @@
+name: Suggérer un writeup ou un cours
+description: Proposer un challenge à traiter, une machine à documenter ou un sujet de cours.
+title: "[Suggestion] <sujet>"
+labels: ["suggestion"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Une PR directe reste la voie normale pour un writeup. Cette issue sert à proposer un sujet
+        que tu ne veux pas (ou ne peux pas) rédiger toi-même.
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type de suggestion
+      options:
+        - Writeup (machine ou challenge)
+        - Cours (nouveau chapitre ou module)
+    validations:
+      required: true
+  - type: input
+    id: sujet
+    attributes:
+      label: Sujet
+      placeholder: HTB « Blue », FCSC 2023 « crypto — … », cours « Active Directory »
+    validations:
+      required: true
+  - type: input
+    id: lien
+    attributes:
+      label: Lien officiel
+      placeholder: https://…
+    validations:
+      required: false
+  - type: textarea
+    id: pourquoi
+    attributes:
+      label: Pourquoi ce sujet
+      description: Intérêt pédagogique, compétence couverte, lacune actuelle du dépôt.
+    validations:
+      required: true
+  - type: dropdown
+    id: redaction
+    attributes:
+      label: Qui rédige ?
+      options:
+        - Je peux rédiger (je veux juste valider le placement)
+        - Je préfère que quelqu'un d'autre s'en charge
+        - J'ai besoin d'aide pour démarrer
+    validations:
+      required: true
