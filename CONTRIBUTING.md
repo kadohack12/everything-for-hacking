@@ -4,6 +4,10 @@ Merci de passer par ici. Ce dépôt est **ouvert aux contributions** : n'importe
 un writeup. Il contient aussi des **cours protégés**, pour éviter qu'ils soient altérés au fil
 des PR.
 
+> **En bref** : sur un writeup, seuls les **flags en clair** et les **liens morts** bloquent la
+> CI — le reste est conseillé. Sur `cours/`, tout est verrouillé : une PR d'un non-mainteneur
+> est refusée, et le contenu est vérifié par empreinte.
+
 | Espace | Qui peut modifier | Comment |
 | --- | --- | --- |
 | [`writeups/`](writeups/) | **tout le monde** | PR directe |
@@ -19,9 +23,9 @@ Sommaire : [1. Récupérer](#1-récupérer-le-dépôt) · [2. Créer le writeup]
 ## 1. Récupérer le dépôt
 
 ```bash
-git clone https://github.com/<ton-login>/all-tout-hack.git
-cd all-tout-hack
-git remote add upstream https://github.com/kadohack12/all-tout-hack.git
+git clone https://github.com/<ton-login>/everything-for-hacking.git
+cd everything-for-hacking
+git remote add upstream https://github.com/kadohack12/everything-for-hacking.git
 git switch -c writeup/hackthebox/nom-machine
 ```
 
@@ -45,7 +49,7 @@ Catégories Hackropole : `crypto`, `web`, `reverse`, `pwn`, `forensics`, `hardwa
 Pour une nouvelle plateforme, crée `writeups/<plateforme>/<type>/<nom>/` et signale-le dans la PR
 (l'index utilisera des colonnes par défaut).
 
-## 3. Nommage (règles strictes)
+## 3. Nommage (recommandé)
 
 - Dossier en **kebab-case minuscule** : `blue`, `a-laise`, `pwn-me-01`.
   Pas d'espace, pas d'accent, pas de majuscule, pas d'underscore : ces noms deviennent des URLs.
@@ -54,7 +58,7 @@ Pour une nouvelle plateforme, crée `writeups/<plateforme>/<type>/<nom>/` et sig
 - Pas de fichier en vrac à la racine d'un writeup (scripts, dumps) : mets-les dans `assets/`
   seulement s'ils sont utiles au lecteur, sinon décris-les en texte.
 
-## 4. Frontmatter obligatoire
+## 4. Frontmatter (recommandé, alimente l'index)
 
 En tête du `README.md`, entre deux `---` :
 
@@ -73,7 +77,7 @@ status: published
 ---
 ```
 
-| Champ | Obligatoire | Format | Remarque |
+| Champ | Conseillé | Format | Remarque |
 | --- | --- | --- | --- |
 | `title` | oui | texte | nom officiel de la machine / du challenge |
 | `platform` | oui | texte | doit correspondre au dossier (tableau ci-dessus) |
@@ -90,9 +94,12 @@ status: published
 - `published` : le contenu est publiable (épreuve terminée, machine retirée de l'actif).
 - `draft` : travail en cours, ou **machine encore active** sur la plateforme — publier son writeup
   pendant qu'elle est active casse le jeu pour les autres.
-- Un `draft` peut vivre dans une PR (la CI avertit sans bloquer), mais **`main` refuse les
-  brouillons** : ne demande le merge qu'une fois le writeup passé en `published`.
+- Un `draft` n'apparaît pas dans l'index. La CI le signale sans bloquer : c'est à toi de ne pas
+  demander le merge tant que la machine est active.
 - Hackropole : les épreuves sont archivées et publiques, tu peux publier directement.
+
+Ces champs ne sont pas vérifiés de façon bloquante : si l'un manque, le writeup reste accepté
+mais s'affiche mal (ou pas) dans l'index. Le mainteneur peut compléter au merge.
 
 ## 5. Contenu attendu
 
@@ -112,15 +119,16 @@ privilèges, Flags, Leçons.
 Python 3.9+ suffit, aucune dépendance à installer.
 
 ```bash
-python3 scripts/check_frontmatter.py   # structure + frontmatter
-python3 scripts/check_links.py         # liens relatifs et images
-python3 scripts/check_secrets.py       # flags en clair, clés, .ovpn
+python3 scripts/check_secrets.py       # BLOQUANT : flags en clair, clés, .ovpn
+python3 scripts/check_links.py         # BLOQUANT : liens relatifs et images
+python3 scripts/check_frontmatter.py   # conseils : structure et frontmatter
+python3 scripts/check_drafts.py        # conseils : liste les brouillons
 python3 scripts/update_index.py        # régénère les tableaux d'index (à committer)
-python3 scripts/check_drafts.py        # liste les brouillons (doit être vide si tu publies)
 ```
 
-`update_index.py` est **obligatoire** : l'index est généré depuis le frontmatter, une PR qui
-l'oublie fait échouer la CI (`--check`).
+Seuls les deux premiers bloquent une PR. L'index est régénéré depuis le frontmatter : si tu
+oublies `update_index.py`, la CI te le signale sans refuser la PR, et le mainteneur le
+régénérera au merge.
 
 Un faux positif du scanner ? Ajoute `secret-scan:ignore` en commentaire sur la ligne concernée.
 
@@ -133,8 +141,9 @@ git push -u origin writeup/hackthebox/nom-machine
 
 - **Une PR = un writeup** (ou une correction ciblée).
 - Remplis le modèle de PR : la checklist évite les allers-retours.
-- La CI doit être verte : structure, liens, secrets, index. Le job « Cours protégés » ne concerne
-  que `cours/`, que tu ne touches pas.
+- La CI doit être verte sur les contrôles bloquants (secrets, liens). Les jobs « conseil »
+  (structure, brouillons, index) peuvent rester en avertissement sans empêcher le merge.
+- Le job « Cours protégés » ne concerne que `cours/`, que tu ne touches pas.
 - Review : je relis, je peux demander des précisions ou reformuler. Le merge reste manuel.
 
 **Ce qui fait refuser une PR** : flag en clair, images manquantes, dossier mal nommé, frontmatter
@@ -153,6 +162,11 @@ C'est pourquoi il n'est **pas ouvert aux PR directes**.
 - La CI bloque toute PR qui modifie `cours/` sans être d'un mainteneur (liste :
   [`.github/MAINTAINERS`](.github/MAINTAINERS)), et [`.github/CODEOWNERS`](.github/CODEOWNERS)
   demande la revue du mainteneur.
+- Chaque fichier de `cours/` est vérifié par empreinte (`cours/MANIFEST.sha256`) : une
+  modification silencieuse est détectée, même par un mainteneur. Après une modification
+  volontaire, le manifeste doit être régénéré : `python3 scripts/check_cours.py --update`.
+- La structure des modules est contrôlée : `NN-Nom-Du-Module`, `README.md` avec `## Objectifs`
+  et `## Plan`, module listé dans le programme, extensions autorisées (`.md`, images, `.pdf`).
 
 ## 9. Licence
 

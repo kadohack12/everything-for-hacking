@@ -1,5 +1,5 @@
 blank_issues_enabled: true
 contact_links:
   - name: Comment contribuer
-    url: https://github.com/kadohack12/all-tout-hack/blob/main/CONTRIBUTING.md
+    url: https://github.com/kadohack12/everything-for-hacking/blob/main/CONTRIBUTING.md
     about: Structure, frontmatter et vérifications à lancer avant d'ouvrir une PR.

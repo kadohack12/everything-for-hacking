@@ -78,10 +78,18 @@ checklist complète : [`CONTRIBUTING.md`](../CONTRIBUTING.md).
 
 ## Règles
 
-- **Nom de dossier** : kebab-case minuscule, sans accent ni espace (`blue`, `a-laise`).
+Bloquant (la CI refuse la PR) :
+
+- **Aucun flag en clair** : `FCSC{...}`, `HTB{...}` — jamais la valeur complète.
+- **Aucun lien mort** : les images référencées doivent exister dans `assets/`.
+
+Conseillé (la CI le signale, sans bloquer) :
+
+- **Nom de dossier** en kebab-case minuscule (`blue`, `a-laise`), plus simple en URL.
+- **Frontmatter complet** (`title`, `platform`, `category`, `difficulty`, `date`, `author`,
+  `status`) : c'est lui qui alimente l'index et affiche ton nom.
+- **`draft` tant que la machine est active**, `published` ensuite.
 - **Pas de spoiler gratuit** : le TL;DR reste vague, les flags sont tronqués.
-- **Aucun flag en clair** : `FCSC{...}`, `HTB{...}` — la CI refuse les flags complets.
 - **Reproductibilité** : les commandes sont complètes et copiables.
 - **Honnêteté** : les indices, les erreurs et les chemins abandonnés sont mentionnés.
-- **`draft` tant que la machine est active** : la CI refuse un `status: draft` sur `main`.
 - **Pas de contenu illégal** : uniquement des cibles autorisées (labs, plateformes d'entraînement).

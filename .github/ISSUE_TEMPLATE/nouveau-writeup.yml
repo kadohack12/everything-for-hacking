@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Une PR directe est la voie normale (voir [CONTRIBUTING.md](https://github.com/kadohack12/all-tout-hack/blob/main/CONTRIBUTING.md)).
+        Une PR directe est la voie normale (voir [CONTRIBUTING.md](https://github.com/kadohack12/everything-for-hacking/blob/main/CONTRIBUTING.md)).
         Cette issue sert aux cas où tu veux valider le placement ou le périmètre avant d'écrire.
   - type: dropdown
     id: plateforme
