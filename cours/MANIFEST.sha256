@@ -13,5 +13,7 @@ a43286a183a11d5b0e37049df7fae696f2972c6b94bf70dbce9029ce1d2b2fab  cours/04-Rever
 a56683047868da3011fbaf2c116c3bd53ba567a2faf0de8835538b792a07f67c  cours/04-Reverse-Engineering-CLI/04-desassemblage-radare2-rizin.md
 5ddaccbdc093b9361740ad1038234865e5d7655ecefb17ce5815f2106fe70c14  cours/04-Reverse-Engineering-CLI/05-analyse-dynamique-gdb-strace.md
 7c8eeb0a26bd792bd58f28d7295b6360d24b7de1976ecdc6e1e4c5824a861bc7  cours/04-Reverse-Engineering-CLI/06-decompilation-cli-patching-z3.md
-7659055058a7e72750e75e150f1c2b34f2f7b2a95289fd70dd24d516f0222be7  cours/04-Reverse-Engineering-CLI/README.md
+52b1b2c91ffbcd81b7ed1397f93de6a45c9872989c22f043db066c695cce8d2d  cours/04-Reverse-Engineering-CLI/07-anti-analyse-et-obfuscation.md
+d6f32323b24bb2792be4523dae7a6dd8c7bb10fd0da984b3efacf4f43f1e14ea  cours/04-Reverse-Engineering-CLI/08-methodologie-crackme-et-autres-formats.md
+adb5e5ae929e988025af25a0ac8b5ea87299a58fc6ed6ad48a3b854700a41fbe  cours/04-Reverse-Engineering-CLI/README.md
 ae78ff6a3d8d2db9f6634e5c50de164a9ca0a9505d9eb7610e276fab03e9386b  cours/README.md

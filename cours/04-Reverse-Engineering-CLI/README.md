@@ -69,6 +69,9 @@ sudo apt install -y \
     binutils file xxd strace ltrace gdb upx-ucl binwalk patchelf \
     python3-pip
 
+# chapitre 4.8 (autres formats) : Java, PE Windows, Go
+sudo apt install -y openjdk-21-jdk-headless mingw-w64 golang-go
+
 # xxd vient du paquet « xxd » (Debian 12+) ; sur les versions plus anciennes :
 # sudo apt install -y vim-common
 
@@ -80,7 +83,8 @@ python3 -m pip install --user z3-solver pwntools capstone
 
 ```bash
 sudo pacman -S --needed binutils file xxd strace ltrace gdb upx binwalk patchelf \
-    python-z3 python-pwntools python-capstone radare2 rizin
+    python-z3 python-pwntools python-capstone radare2 rizin \
+    jdk-openjdk mingw-w64 go
 ```
 
 ### Débogueur amélioré : pwndbg ou gef
@@ -138,8 +142,8 @@ sudo apt install -y rizin        # ou : git clone https://github.com/rizinorg/ri
 | 4.4 | Désassemblage et graphe en CLI | `r2`/`rizin`, `afl`, `pdf`, `VV`, renommage, xrefs | cartographier un crackme dans r2 |
 | 4.5 | [Analyse dynamique et débogage CLI](05-analyse-dynamique-gdb-strace.md) | `strace`, `ltrace`, `gdb` en `-batch`, watchpoints, PIE, patch en mémoire | retrouver le mot de passe en mémoire |
 | 4.6 | [Décompilation, patching et solveurs](06-decompilation-cli-patching-z3.md) | `pdc`/`pdg`, `r2 -w`, `patchelf`, `r2pipe`, `z3`, `angr` | patcher un test et résoudre par z3 |
-| 4.7 | Anti-debug, binaires strippés et obfuscation | `ptrace`, `LD_PRELOAD`, packing, code mort, string encryption | désosser un binaire qui se défend |
-| 4.8 | Méthodologie complète et autres formats CLI | PE, Mach-O, .NET, Python compilé, firmware, arbre de décision | crackme complet de bout en bout |
+| 4.7 | [Anti-debug, binaires strippés et obfuscation](07-anti-analyse-et-obfuscation.md) | `ptrace`, `TracerPid`, `LD_PRELOAD`, XOR, stack strings, code mort, UPX, patch | désosser un binaire qui se défend |
+| 4.8 | [Méthodologie complète et autres formats CLI](08-methodologie-crackme-et-autres-formats.md) | cinq phases, arbre de décision, `.pyc`, PE, `.jar`, Go, APK, `z3` | crackme complet de bout en bout |
 
 ## Fiches de chapitre
 
@@ -154,8 +158,8 @@ commandes réelles, tableau de synthèse, pièges, exercice corrigé.
 | 4.4 Désassemblage et graphe en CLI | [04 — Désassemblage radare2 / rizin](04-desassemblage-radare2-rizin.md) | rédigée |
 | 4.5 Analyse dynamique et débogage | [05 — Analyse dynamique : strace, ltrace, gdb](05-analyse-dynamique-gdb-strace.md) | rédigée |
 | 4.6 Décompilation, patching, solveurs | [06 — Décompilation, patching et solveurs](06-decompilation-cli-patching-z3.md) | rédigée |
-| 4.7 Anti-analyse et obfuscation | — | à venir |
-| 4.8 Méthodologie et autres formats | — | à venir |
+| 4.7 Anti-analyse et obfuscation | [07 — Anti-analyse et obfuscation](07-anti-analyse-et-obfuscation.md) | rédigée |
+| 4.8 Méthodologie et autres formats | [08 — Méthodologie et autres formats](08-methodologie-crackme-et-autres-formats.md) | rédigée |
 
 ## Labs récapitulatifs
 
@@ -171,7 +175,7 @@ commandes réelles, tableau de synthèse, pièges, exercice corrigé.
 
 `file` · `strings` · `xxd` · `readelf` · `objdump` · `nm` · `binwalk` · `upx` · `strace` ·
 `ltrace` · `gdb` (+ `pwndbg`/`gef`) · `radare2`/`rizin` (+ `pdc`/`pdg`) · `patchelf` ·
-`r2pipe` · `z3` · `angr`
+`r2pipe` · `z3` · `angr` · `javap`/`unzip` (Java) · `pefile` (PE) · `go` (Go)
 
 ## Ressources
 
