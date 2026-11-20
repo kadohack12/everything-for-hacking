@@ -1,8 +1,8 @@
 # Writeups & Cours — Cybersécurité
 
-[![Writeups](https://img.shields.io/badge/writeups-CTF%20%26%20machines-blue)](#-writeups)
-[![Cours](https://img.shields.io/badge/cours-fondamentaux-green)](#-cours)
-[![Langue](https://img.shields.io/badge/langue-français-lightgrey)](#)
+[![Writeups](https://img.shields.io/badge/writeups-CTF%20%26%20machines-blue)](writeups/README.md)
+[![Cours](https://img.shields.io/badge/cours-fondamentaux-green)](cours/README.md)
+[![Licence](https://img.shields.io/badge/licence-CC%20BY--SA%204.0-lightgrey)](https://creativecommons.org/licenses/by-sa/4.0/deed.fr)
 
 Ce dépôt rassemble mes notes de terrain en cybersécurité :
 
