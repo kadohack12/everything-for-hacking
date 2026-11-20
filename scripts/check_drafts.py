@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-"""Échoue si un writeup n'est pas encore publié (`status: published`).
+"""Liste les writeups encore en brouillon (`status: draft`).
 
-À utiliser en bloquant sur `main` : un brouillon ne doit pas atterrir sur un
-dépôt public (machine encore active, notes incomplètes). En PR, `--warn-only`
-signale sans bloquer.
+Mode par défaut : simple avertissement (code retour 0). `--strict` échoue si un
+brouillon existe — utile juste avant de merger sur `main`, puisqu'un brouillon
+public peut spoiler une machine encore active.
 
 Usage :
-    python3 scripts/check_drafts.py              # code retour 1 si brouillon
-    python3 scripts/check_drafts.py --warn-only  # signale sans échouer
+    python3 scripts/check_drafts.py             # avertit, code retour 0
+    python3 scripts/check_drafts.py --strict    # échoue si brouillon
 """
 
 from __future__ import annotations
@@ -24,7 +24,7 @@ from writeups_lib import ROOT, iter_writeups  # noqa: E402
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--root", type=Path, default=ROOT)
-    parser.add_argument("--warn-only", action="store_true", help="signaler sans échouer (mode PR)")
+    parser.add_argument("--strict", action="store_true", help="échouer si un brouillon existe")
     args = parser.parse_args(argv)
     root = args.root.resolve()
 
@@ -41,9 +41,11 @@ def main(argv: list[str] | None = None) -> int:
         state = f"status: {writeup.status}" if writeup.status else "status absent"
         details.append(f"   {rel}  ({state})")
 
-    if args.warn_only:
-        print(f"⚠️  {len(drafts)} brouillon(s) présent(s) — bloquant une fois sur main :")
+    if not args.strict:
+        print(f"⚠️  {len(drafts)} brouillon(s) présent(s) :")
         print("\n".join(details))
+        print("\n   Non bloquant. Un brouillon n'apparaît pas dans l'index ; ne pas merger")
+        print("   un writeup de machine encore active sur main (`--strict` pour bloquer).")
         return 0
 
     print(f"❌ {len(drafts)} writeup(s) encore en brouillon :", file=sys.stderr)

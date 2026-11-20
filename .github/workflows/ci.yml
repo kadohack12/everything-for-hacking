@@ -1,5 +1,7 @@
 name: CI
 
+# Philosophie : les writeups sont faciles à contribuer (contrôles de qualité en
+# avertissement), les cours sont verrouillés (contrôles bloquants + empreintes).
 on:
   push:
     branches: [main]
@@ -15,17 +17,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  links:
-    name: Liens & images
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - name: Vérifier les liens relatifs et les images locales
-        run: python3 scripts/check_links.py
+  # ---------- Bloquants : sécurité et intégrité ----------
 
   secrets:
     name: Flags & secrets
@@ -39,8 +31,8 @@ jobs:
       - name: Refuser les flags en clair, clés privées et fichiers de credentials
         run: python3 scripts/check_secrets.py
 
-  drafts:
-    name: Writeups publiés
+  links:
+    name: Liens & images
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -48,36 +40,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Échouer si un writeup de main est encore en brouillon
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        run: python3 scripts/check_drafts.py
-      - name: Signaler les brouillons sur une PR
-        if: github.event_name != 'push' || github.ref != 'refs/heads/main'
-        run: python3 scripts/check_drafts.py --warn-only
-
-  index:
-    name: Index à jour
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - name: Vérifier que l'index a été régénéré
-        run: python3 scripts/update_index.py --check
-
-  structure:
-    name: Structure des writeups
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - name: Valider l'arborescence et le frontmatter
-        run: python3 scripts/check_frontmatter.py
+      - name: Vérifier les liens relatifs et les images locales
+        run: python3 scripts/check_links.py
 
   cours:
     name: Cours protégés
@@ -92,3 +56,56 @@ jobs:
         run: git fetch --no-tags origin "${{ github.base_ref }}:refs/remotes/origin/${{ github.base_ref }}"
       - name: Refuser une modification de cours/ hors mainteneur
         run: python3 scripts/check_cours_protection.py --actor "${{ github.actor }}" --base "origin/${{ github.base_ref }}"
+
+  cours-integrity:
+    name: Intégrité des cours
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Structure des modules et empreintes du manifeste
+        run: python3 scripts/check_cours.py
+
+  # ---------- Conseils : qualité des writeups, non bloquants ----------
+
+  structure:
+    name: Structure des writeups (conseil)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Conseils sur l'arborescence et le frontmatter
+        run: python3 scripts/check_frontmatter.py
+
+  drafts:
+    name: Writeups publiés (conseil)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Lister les writeups encore en brouillon
+        run: python3 scripts/check_drafts.py
+
+  index:
+    name: Index des writeups (conseil)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Signaler un index périmé
+        run: python3 scripts/update_index.py --check

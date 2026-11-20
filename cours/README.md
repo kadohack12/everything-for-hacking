@@ -6,6 +6,9 @@ Retour à l'[accueil](../README.md) · Voir les [writeups](../writeups/README.md
 > Une erreur, une imprécision, une source manquante ? Ouvre une issue
 > **« Signaler une erreur »** : la correction est relue et intégrée par un mainteneur
 > (voir [`CONTRIBUTING.md`](../CONTRIBUTING.md#8-cours--espace-protégé)).
+>
+> Chaque fichier est vérifié par empreinte dans [`MANIFEST.sha256`](MANIFEST.sha256) : après une
+> modification volontaire, régénérer le manifeste avec `python3 scripts/check_cours.py --update`.
 
 Notes de cours structurées, avec une progression du plus fondamental vers le plus appliqué.
 Chaque module a son `README.md` (plan + notes) et un dossier `assets/` pour les schémas.

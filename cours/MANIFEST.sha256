@@ -1,0 +1,9 @@
+# Intégrité du dossier cours/ — généré par `python3 scripts/check_cours.py --update`
+# Ne pas éditer à la main : toute modification d'un cours doit être suivie d'une régénération.
+8b2b41134df476bae3d587635244edbef837acf91eb9b3976aaba910116cf163  cours/01-Reseau-Bases/README.md
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  cours/01-Reseau-Bases/assets/.gitkeep
+937183924c275469156a5b7f0613b655a56f0151e6c0cc5203ac74fdd621f323  cours/02-Linux-Privilege-Escalation/README.md
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  cours/02-Linux-Privilege-Escalation/assets/.gitkeep
+b309cda3f63067cc8258b53c0e21654e354acfcef317cabf64d77f2dcaf107e1  cours/03-Web-OWASP/README.md
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  cours/03-Web-OWASP/assets/.gitkeep
+a5c597c6a6951f58c02531c435d042baf2c2abd8766516a9b51290dd744fcdc6  cours/README.md

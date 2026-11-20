@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
 """Valide la structure et le frontmatter de chaque writeup.
 
-Contrôles bloquants :
+Mode par défaut : **conseils non bloquants** (code retour 0). La CI signale les
+écarts sans bloquer une contribution. `--strict` transforme les conseils en
+échec, pour un passage de contrôle avant merge.
+
+Contrôles :
   - dossier en kebab-case minuscule (sans accent, sans espace) ;
   - frontmatter avec title, platform, category, difficulty, date, author, status ;
   - status parmi draft / published ;
@@ -10,7 +14,9 @@ Contrôles bloquants :
   - hackropole : catégorie connue et identique au dossier ;
   - README.md avec un titre de niveau 1.
 
-Usage : python3 scripts/check_frontmatter.py [--root DIR]
+Usage :
+    python3 scripts/check_frontmatter.py            # conseils, code retour 0
+    python3 scripts/check_frontmatter.py --strict   # code retour 1 si écart
 """
 
 from __future__ import annotations
@@ -121,6 +127,7 @@ def check_template(root: Path) -> list[str]:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--root", type=Path, default=ROOT)
+    parser.add_argument("--strict", action="store_true", help="échouer au lieu de conseiller")
     args = parser.parse_args(argv)
     root = args.root.resolve()
 
@@ -146,13 +153,19 @@ def main(argv: list[str] | None = None) -> int:
     for warning in warnings:
         print(f"⚠️  {warning}")
     if failures:
-        print(f"\n❌ {sum(len(v) for v in failures.values())} problème(s) de structure :", file=sys.stderr)
+        total = sum(len(v) for v in failures.values())
+        icon = "❌" if args.strict else "⚠️ "
+        print(f"\n{icon} {total} écart(s) de structure (sur {len(failures)} fichier(s)) :", file=sys.stderr)
         for path, problems in failures.items():
             print(f"   {path}", file=sys.stderr)
             for problem in problems:
                 print(f"     - {problem}", file=sys.stderr)
-        print("\n   Voir CONTRIBUTING.md (structure et frontmatter obligatoires).", file=sys.stderr)
-        return 1
+        if args.strict:
+            print("\n   Voir CONTRIBUTING.md (structure et frontmatter attendus).", file=sys.stderr)
+            return 1
+        print("\n   Non bloquant : ces écarts n'empêchent pas la contribution.", file=sys.stderr)
+        print("   Le mainteneur peut les corriger au merge ; `--strict` les rend bloquants.", file=sys.stderr)
+        return 0
     print("✅ Structure et frontmatter conformes")
     return 0
 
