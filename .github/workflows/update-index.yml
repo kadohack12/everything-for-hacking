@@ -1,0 +1,45 @@
+name: Index des writeups
+
+# Un contributeur peut oublier `python3 scripts/update_index.py` : l'index se
+# régénère tout seul sur main après le merge. Le commit du bot porte [skip ci]
+# pour ne pas relancer ce workflow ni la CI (pas de boucle).
+on:
+  push:
+    branches: [main]
+    paths:
+      - "writeups/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-index-main
+  cancel-in-progress: false
+
+jobs:
+  regenerate:
+    name: Régénérer l'index
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Récupérer main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Régénérer les tableaux
+        run: python3 scripts/update_index.py
+      - name: Committer si l'index a changé
+        run: |
+          if git diff --quiet -- writeups; then
+            echo "Index déjà à jour, rien à committer."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add writeups
+          git commit -m "chore(index): régénération automatique [skip ci]"
+          git push origin HEAD:main
