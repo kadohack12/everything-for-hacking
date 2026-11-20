@@ -37,7 +37,7 @@ L'objectif n'est pas de donner le flag mais de montrer **le raisonnement** et le
 
 | Challenge | Catégorie | Édition | Date | Writeup |
 | --- | --- | --- | --- | --- |
-| _aucun writeup publié pour le moment_ |  |  |  |  |
+| À l'aise | crypto | 2022 | 2026-11-20 | [Writeup](hackropole.fr/Challenges/crypto/a-laise/) |
 
 <!-- INDEX:END:hackropole.fr -->
 

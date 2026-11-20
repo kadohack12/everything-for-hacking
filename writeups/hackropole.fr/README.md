@@ -21,7 +21,7 @@ Challenges de [hackropole.fr](https://hackropole.fr/), la plateforme d'entraîne
 
 | Challenge | Catégorie | Édition | Date | Writeup |
 | --- | --- | --- | --- | --- |
-| _aucun writeup publié pour le moment_ |  |  |  |  |
+| À l'aise | crypto | 2022 | 2026-11-20 | [Writeup](Challenges/crypto/a-laise/) |
 
 <!-- INDEX:END -->
 
