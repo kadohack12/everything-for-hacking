@@ -26,3 +26,7 @@ notes-privees.md
 
 # Mémoire locale de l'agent
 .openhands/
+
+# Python
+__pycache__/
+*.pyc

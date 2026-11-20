@@ -7,23 +7,39 @@ L'objectif n'est pas de donner le flag mais de montrer **le raisonnement** et le
 
 ## Index
 
+> Ces tableaux sont **générés automatiquement** par [`scripts/update_index.py`](../scripts/update_index.py)
+> à partir du frontmatter de chaque writeup : seuls les `status: published` apparaissent.
+> Ne pas les éditer à la main — ajouter le writeup, puis lancer `python3 scripts/update_index.py`.
+
 ### Hack The Box — Machines
 
-| Machine | OS | Difficulté | Techniques clés | Statut |
+<!-- INDEX:START:hackthebox -->
+
+| Machine | OS | Difficulté | Date | Writeup |
 | --- | --- | --- | --- | --- |
-| _à venir_ | | | | |
+| _aucun writeup publié pour le moment_ |  |  |  |  |
+
+<!-- INDEX:END:hackthebox -->
 
 ### TryHackMe — Rooms
 
-| Room | Thème | Difficulté | Statut |
-| --- | --- | --- | --- |
-| _à venir_ | | | |
+<!-- INDEX:START:tryhackme -->
+
+| Room | Thème | Difficulté | Date | Writeup |
+| --- | --- | --- | --- | --- |
+| _aucun writeup publié pour le moment_ |  |  |  |  |
+
+<!-- INDEX:END:tryhackme -->
 
 ### Hackropole (FCSC) — Challenges
 
-| Challenge | Catégorie | Édition | Statut |
-| --- | --- | --- | --- |
-| _à venir_ | | | |
+<!-- INDEX:START:hackropole.fr -->
+
+| Challenge | Catégorie | Édition | Date | Writeup |
+| --- | --- | --- | --- | --- |
+| _aucun writeup publié pour le moment_ |  |  |  |  |
+
+<!-- INDEX:END:hackropole.fr -->
 
 ## Comment est organisé un writeup
 
@@ -48,10 +64,11 @@ Le `README.md` suit le modèle [`_template/README.md`](_template/README.md) :
 
 ```bash
 cp -r _template hackthebox/Machines/NomMachine
+python3 ../scripts/update_index.py      # depuis writeups/, ou depuis la racine : python3 scripts/update_index.py
 ```
 
 Puis renommer les captures dans `assets/` et compléter le `README.md`.
-Ne pas oublier d'ajouter la ligne dans le tableau ci-dessus.
+Le frontmatter démarre en `status: draft` : l'index ne l'affiche qu'une fois passé en `published`.
 
 ## Règles
 
@@ -59,3 +76,5 @@ Ne pas oublier d'ajouter la ligne dans le tableau ci-dessus.
 - **Reproductibilité** : les commandes sont complètes et copiables.
 - **Honnêteté** : les indices, les erreurs et les chemins abandonnés sont mentionnés.
 - **Pas de contenu illégal** : uniquement des cibles autorisées (labs, plateformes d'entraînement).
+- **`draft` tant que la machine est active** : la CI refuse un `status: draft` sur `main`.
+- **Aucun flag en clair** : la CI bloque `HTB{…}`, `THM{…}`, `FCSC{…}`, `CTF{…}` et les clés privées.
