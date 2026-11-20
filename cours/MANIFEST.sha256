@@ -1,6 +1,7 @@
 # Intégrité du dossier cours/ — généré par `python3 scripts/check_cours.py --update`
 # Ne pas éditer à la main : toute modification d'un cours doit être suivie d'une régénération.
-8b2b41134df476bae3d587635244edbef837acf91eb9b3976aaba910116cf163  cours/01-Reseau-Bases/README.md
+de768bf556335ad0d6d74014acaa9c67e01580f10d04228e7ba9de0112699edf  cours/01-Reseau-Bases/01-modele-osi-et-tcp-ip.md
+e235565193d7418ea5a8d0c2fcc486ff83de68675266de1a667c4172c5823938  cours/01-Reseau-Bases/README.md
 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  cours/01-Reseau-Bases/assets/.gitkeep
 937183924c275469156a5b7f0613b655a56f0151e6c0cc5203ac74fdd621f323  cours/02-Linux-Privilege-Escalation/README.md
 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  cours/02-Linux-Privilege-Escalation/assets/.gitkeep
