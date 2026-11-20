@@ -121,7 +121,10 @@ La CI (`.github/workflows/ci.yml`) tourne sur chaque push et PR vers `main` :
 | Writeups publiés | non | liste les `status: draft` restants | `python3 scripts/check_drafts.py` |
 | Index des writeups | non | les tableaux sont régénérés | `python3 scripts/update_index.py --check` |
 
-Les trois derniers jobs sont en `continue-on-error` : ils **conseillent** sans bloquer une PR.
+Un septième workflow, [`update-index.yml`](.github/workflows/update-index.yml), régénère l'index
+après chaque merge touchant `writeups/` : un contributeur n'a pas à y penser.
+
+Les trois jobs « conseil » sont en `continue-on-error` : ils **conseillent** sans bloquer une PR.
 Pour un passage de contrôle strict avant merge, ajoute `--strict` à `check_frontmatter.py` ou
 `check_drafts.py`.
 

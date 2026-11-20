@@ -212,8 +212,21 @@ git push -u origin writeup/hackthebox/nom-machine
 - Review : je relis, je peux demander des précisions ou reformuler. Le merge reste manuel.
 
 **Ce qui fait refuser une PR** : flag en clair, images manquantes, dossier mal nommé, frontmatter
-incomplet, index non régénéré, writeup d'une machine encore active, contenu copié sans source,
-ou modification de `cours/`.
+incomplet, writeup d'une machine encore active, contenu copié sans source, ou modification de
+`cours/`.
+
+### Régénération automatique de l'index
+
+Après le merge, le workflow [`update-index.yml`](.github/workflows/update-index.yml) relance
+`scripts/update_index.py` sur `main` et commite le résultat
+(`chore(index): régénération automatique [skip ci]`). Oublier l'index n'est donc pas bloquant.
+
+> **Note mainteneur.** `main` exige 4 status checks, et GitHub refuse alors tout push direct —
+> y compris celui du `GITHUB_TOKEN` du workflow (`GH006: 4 of 4 required status checks are
+> expected`). Pour que le bot puisse commiter, ajoute un secret **`GH_TOKEN`** : PAT fine-grained,
+> *Contents: read and write* sur ce dépôt. Sans ce secret, le job affiche un avertissement et
+> s'arrête sans casser la CI ; il suffit alors de lancer `python3 scripts/update_index.py` à la
+> main.
 
 ## 8. Cours : espace protégé
 

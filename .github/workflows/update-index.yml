@@ -1,8 +1,16 @@
 name: Index des writeups
 
 # Un contributeur peut oublier `python3 scripts/update_index.py` : l'index se
-# régénère tout seul sur main après le merge. Le commit du bot porte [skip ci]
-# pour ne pas relancer ce workflow ni la CI (pas de boucle).
+# régénère sur main après le merge. Le commit du bot porte [skip ci] pour ne pas
+# relancer ce workflow ni la CI (pas de boucle).
+#
+# Protection de branche : `main` exige 4 status checks, et GitHub refuse alors
+# tout push direct — y compris celui du GITHUB_TOKEN. Deux façons d'autoriser :
+#   1. secret `GH_TOKEN` = PAT du mainteneur (fine-grained, Contents: read/write).
+#      Il bénéficie de `enforce_admins: false` et pousse donc sur main.
+#   2. retirer les checks requis de la protection (le job passe alors avec
+#      GITHUB_TOKEN, mais les PR rouges deviennent mergeables).
+# Sans secret, le job ne casse rien : il avertit et s'arrête proprement.
 on:
   push:
     branches: [main]
@@ -27,12 +35,15 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main
+          token: ${{ secrets.GH_TOKEN || secrets.GITHUB_TOKEN }}
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       - name: Régénérer les tableaux
         run: python3 scripts/update_index.py
       - name: Committer si l'index a changé
+        env:
+          HAS_PAT: ${{ secrets.GH_TOKEN != '' }}
         run: |
           if git diff --quiet -- writeups; then
             echo "Index déjà à jour, rien à committer."
@@ -42,4 +53,23 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add writeups
           git commit -m "chore(index): régénération automatique [skip ci]"
-          git push origin HEAD:main
+          if git push origin HEAD:main; then
+            echo "Index régénéré et poussé sur main."
+            exit 0
+          fi
+          if [ "$HAS_PAT" = "true" ]; then
+            echo "::error::GH_TOKEN n'a pas pu pousser sur main (scope Contents: write ?)."
+            exit 1
+          fi
+          echo "::warning::Index périmé, mais la protection de main refuse le push du bot."
+          {
+            echo "### Index périmé"
+            echo
+            echo "La protection de \`main\` (4 checks requis) refuse le push du \`GITHUB_TOKEN\`."
+            echo "Ajoute un secret **GH_TOKEN** (PAT fine-grained, *Contents: read and write*)"
+            echo "pour activer la régénération automatique, ou lance localement :"
+            echo
+            echo '```bash'
+            echo "python3 scripts/update_index.py && git commit -am 'chore(index)' && git push"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
