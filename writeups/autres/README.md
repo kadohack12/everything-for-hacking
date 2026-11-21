@@ -29,13 +29,73 @@ Deux règles, et elles suffisent :
 Un doute sur un cas limite ? Ouvre une issue **Suggérer un writeup ou un cours** avant de rédiger,
 plutôt que de découvrir le refus en review.
 
+## HackerLab Benin 2026
+
+CTF terminé (novembre 2026). Les 35 fiches viennent du dépôt
+[DazBot13-boopt/hackerlab-benin-2026-wu](https://github.com/DazBot13-boopt/hackerlab-benin-2026-wu),
+écrites par **DazBot13-boopt** et **elielfresnel**, intégrées ici avec leur accord.
+
+Le corps de chaque fiche est repris tel quel : seul le frontmatter de ce dépôt a été ajouté.
+Les flags affichés sont ceux de l'épreuve, close à la date d'import.
+
+| Épreuve | Questions couvertes | Préfixe de dossier |
+| --- | --- | --- |
+| The Fall of JANUS (forensics) | Q1–Q5, Q8, Q9 — Q6 et Q7 non résolues | `janus-*` |
+| Last Departure / Northline (web) | Q4 | `northline-*` |
+| Harmattan (OSINT) | Q1 | `harmattan-*` |
+| The Fall of Memento (misc) | Q1–Q3 | `memento-*` |
+| Sail Away (ICS) | Q2–Q4 | `sail-away-*` |
+| Kiss of Death (misc) | Q6 | `kiss-of-death-*` |
+| FBI Valdoria (AD) | Q11, Q12 | `fbi-valdoria-*`, `sealed-order-*`, `core-systems-*` |
+| Épreuves isolées | crypto, pwn, web, forensics, misc | `vault-*`, `lockbox`, `cagliostro`… |
+
+Les fiches sont rangées à plat (`autres/hackerlab-benin-2026/<slug>/`) : le regroupement par
+épreuve passe par le préfixe du dossier et le champ `category` du frontmatter.
+
+**Crédits.** © DazBot13-boopt et elielfresnel. En cas de réutilisation, citer les auteurs et le
+dépôt d'origine.
+
 ## Challenges publiés
 
 <!-- INDEX:START -->
 
 | Plateforme / CTF | Challenge | Catégorie | Difficulté | Auteur | Date | Writeup |
 | --- | --- | --- | --- | --- | --- | --- |
-| _aucun writeup publié pour le moment_ |  |  |  |  |  |  |
+| HackerLab Benin 2026 | Broken Relay · AD1 + relay.db | forensics | — | [DazBot13-boopt, elielfresnel](https://github.com/DazBot13-boopt) | 2026-11-20 | [Writeup](hackerlab-benin-2026/broken-relay/) |
+| HackerLab Benin 2026 | Cagliostro · LFI + JWT + WeasyPrint | web | — | [DazBot13-boopt, elielfresnel](https://github.com/DazBot13-boopt) | 2026-11-20 | [Writeup](hackerlab-benin-2026/cagliostro/) |
+| HackerLab Benin 2026 | CashCache · ATO WordPress → JWT → PJL | forensics | — | [DazBot13-boopt, elielfresnel](https://github.com/DazBot13-boopt) | 2026-11-20 | [Writeup](hackerlab-benin-2026/cashcache/) |
+| HackerLab Benin 2026 | Core Systems Q12 · RBCD via LDAP | ad | — | [DazBot13-boopt, elielfresnel](https://github.com/DazBot13-boopt) | 2026-11-20 | [Writeup](hackerlab-benin-2026/core-systems-q12-rbcd/) |
+| HackerLab Benin 2026 | Death Match · Battle 01 · SSTI Jinja2 | web | — | [DazBot13-boopt, elielfresnel](https://github.com/DazBot13-boopt) | 2026-11-20 | [Writeup](hackerlab-benin-2026/deathmatch-battle-01/) |
+| HackerLab Benin 2026 | FBI Valdoria Q11 · Deep Archive | ad | — | [DazBot13-boopt, elielfresnel](https://github.com/DazBot13-boopt) | 2026-11-20 | [Writeup](hackerlab-benin-2026/fbi-valdoria-q11-deep-archive/) |
+| HackerLab Benin 2026 | FBI Valdoria Q12 · Core Systems | ad | — | [DazBot13-boopt, elielfresnel](https://github.com/DazBot13-boopt) | 2026-11-20 | [Writeup](hackerlab-benin-2026/fbi-valdoria-q12-core-systems/) |
+| HackerLab Benin 2026 | Forensic Recovery · Git + GPG | forensics | — | [DazBot13-boopt, elielfresnel](https://github.com/DazBot13-boopt) | 2026-11-20 | [Writeup](hackerlab-benin-2026/forensic-recovery/) |
+| HackerLab Benin 2026 | Harmattan Q1 · Operation BATMAN | misc | — | [DazBot13-boopt, elielfresnel](https://github.com/DazBot13-boopt) | 2026-11-20 | [Writeup](hackerlab-benin-2026/harmattan-q1-operation-batman/) |
+| HackerLab Benin 2026 | Human After All · Phishing SMTP | misc | — | [DazBot13-boopt, elielfresnel](https://github.com/DazBot13-boopt) | 2026-11-20 | [Writeup](hackerlab-benin-2026/human-after-all/) |
+| HackerLab Benin 2026 | Inside Job Q1 · Reset Password Poisoning | web | — | [DazBot13-boopt, elielfresnel](https://github.com/DazBot13-boopt) | 2026-11-20 | [Writeup](hackerlab-benin-2026/inside-job-q1-reset-poisoning/) |
+| HackerLab Benin 2026 | Inside Job Q2 · AES-256-CBC | crypto | — | [DazBot13-boopt, elielfresnel](https://github.com/DazBot13-boopt) | 2026-11-20 | [Writeup](hackerlab-benin-2026/inside-job-q2-aes-256-cbc/) |
+| HackerLab Benin 2026 | Inside Job Q3 · Table convoy_route | misc | — | [DazBot13-boopt, elielfresnel](https://github.com/DazBot13-boopt) | 2026-11-20 | [Writeup](hackerlab-benin-2026/inside-job-q3-table-base64/) |
+| HackerLab Benin 2026 | JANUS Q1 · Ransomless | forensics | — | [DazBot13-boopt, elielfresnel](https://github.com/DazBot13-boopt) | 2026-11-20 | [Writeup](hackerlab-benin-2026/janus-q1-ransomless/) |
+| HackerLab Benin 2026 | JANUS Q2 · The Trojan Horse | forensics | — | [DazBot13-boopt, elielfresnel](https://github.com/DazBot13-boopt) | 2026-11-20 | [Writeup](hackerlab-benin-2026/janus-q2-trojan-horse/) |
+| HackerLab Benin 2026 | JANUS Q3 · New Blood | forensics | — | [DazBot13-boopt, elielfresnel](https://github.com/DazBot13-boopt) | 2026-11-20 | [Writeup](hackerlab-benin-2026/janus-q3-new-blood/) |
+| HackerLab Benin 2026 | JANUS Q4 · Royal Heist | forensics | — | [DazBot13-boopt, elielfresnel](https://github.com/DazBot13-boopt) | 2026-11-20 | [Writeup](hackerlab-benin-2026/janus-q4-royal-heist/) |
+| HackerLab Benin 2026 | JANUS Q5 · No Witnesses | forensics | — | [DazBot13-boopt, elielfresnel](https://github.com/DazBot13-boopt) | 2026-11-20 | [Writeup](hackerlab-benin-2026/janus-q5-no-witnesses/) |
+| HackerLab Benin 2026 | JANUS Q8 · True Identity | forensics | — | [DazBot13-boopt, elielfresnel](https://github.com/DazBot13-boopt) | 2026-11-20 | [Writeup](hackerlab-benin-2026/janus-q8-true-identity/) |
+| HackerLab Benin 2026 | JANUS Q9 · Hidden Treasure | forensics | — | [DazBot13-boopt, elielfresnel](https://github.com/DazBot13-boopt) | 2026-11-20 | [Writeup](hackerlab-benin-2026/janus-q9-hidden-treasure/) |
+| HackerLab Benin 2026 | Kiss of Death Q6 · Papyrus | misc | — | [DazBot13-boopt, elielfresnel](https://github.com/DazBot13-boopt) | 2026-11-20 | [Writeup](hackerlab-benin-2026/kiss-of-death-q6-papyrus/) |
+| HackerLab Benin 2026 | Lockbox · OTP addition digit-wise | crypto | — | [DazBot13-boopt, elielfresnel](https://github.com/DazBot13-boopt) | 2026-11-20 | [Writeup](hackerlab-benin-2026/lockbox/) |
+| HackerLab Benin 2026 | Memento Q1 · Under Seal | misc | — | [DazBot13-boopt, elielfresnel](https://github.com/DazBot13-boopt) | 2026-11-20 | [Writeup](hackerlab-benin-2026/memento-q1-under-seal/) |
+| HackerLab Benin 2026 | Memento Q2 · Shooting Window | misc | — | [DazBot13-boopt, elielfresnel](https://github.com/DazBot13-boopt) | 2026-11-20 | [Writeup](hackerlab-benin-2026/memento-q2-shooting-window/) |
+| HackerLab Benin 2026 | Memento Q3 · The Hideout | misc | — | [DazBot13-boopt, elielfresnel](https://github.com/DazBot13-boopt) | 2026-11-20 | [Writeup](hackerlab-benin-2026/memento-q3-the-hideout/) |
+| HackerLab Benin 2026 | Northline Q4 · WINDOW | web | — | [DazBot13-boopt, elielfresnel](https://github.com/DazBot13-boopt) | 2026-11-20 | [Writeup](hackerlab-benin-2026/northline-q4-window/) |
+| HackerLab Benin 2026 | Sail Away Q2 · Flow In | ics | — | [DazBot13-boopt, elielfresnel](https://github.com/DazBot13-boopt) | 2026-11-20 | [Writeup](hackerlab-benin-2026/sail-away-q2-flow-in/) |
+| HackerLab Benin 2026 | Sail Away Q3 · Welcome to the Machine | ics | — | [DazBot13-boopt, elielfresnel](https://github.com/DazBot13-boopt) | 2026-11-20 | [Writeup](hackerlab-benin-2026/sail-away-q3-welcome-to-the-machine/) |
+| HackerLab Benin 2026 | Sail Away Q4 · Renegade | ics | — | [DazBot13-boopt, elielfresnel](https://github.com/DazBot13-boopt) | 2026-11-20 | [Writeup](hackerlab-benin-2026/sail-away-q4-renegade/) |
+| HackerLab Benin 2026 | Sealed Order Q11 · Délégation contrainte S4U | ad | — | [DazBot13-boopt, elielfresnel](https://github.com/DazBot13-boopt) | 2026-11-20 | [Writeup](hackerlab-benin-2026/sealed-order-q11-constrained-delegation/) |
+| HackerLab Benin 2026 | Silent Broker · CVE-2023-46604 ActiveMQ | web | — | [DazBot13-boopt, elielfresnel](https://github.com/DazBot13-boopt) | 2026-11-20 | [Writeup](hackerlab-benin-2026/silent-broker/) |
+| HackerLab Benin 2026 | Stay Behind · AWS IAM persistence | web | — | [DazBot13-boopt, elielfresnel](https://github.com/DazBot13-boopt) | 2026-11-20 | [Writeup](hackerlab-benin-2026/stay-behind/) |
+| HackerLab Benin 2026 | Subject File · SMB share caché Recon-Data | ad | — | [DazBot13-boopt, elielfresnel](https://github.com/DazBot13-boopt) | 2026-11-20 | [Writeup](hackerlab-benin-2026/subject-file/) |
+| HackerLab Benin 2026 | Vault 0037 · Feistel8 + AES-KW | crypto | — | [DazBot13-boopt, elielfresnel](https://github.com/DazBot13-boopt) | 2026-11-20 | [Writeup](hackerlab-benin-2026/vault-0037/) |
+| HackerLab Benin 2026 | Vault KeyCtl · Truncation entière + OOB | pwn | — | [DazBot13-boopt, elielfresnel](https://github.com/DazBot13-boopt) | 2026-11-20 | [Writeup](hackerlab-benin-2026/vault-keyctl/) |
 
 <!-- INDEX:END -->
 
