@@ -17,7 +17,7 @@ Chaque module a son `README.md` (plan + notes) et un dossier `assets/` pour les 
 
 | # | Module | Objectif | Statut |
 | --- | --- | --- | --- |
-| 01 | [Réseau — Bases](01-Reseau-Bases/README.md) | Lire, comprendre et capturer du trafic | 🚧 en cours |
+| 01 | [Réseau — Bases](01-Reseau-Bases/README.md) | Lire, comprendre et capturer du trafic (11 chapitres) | ✅ terminé |
 | 02 | [Linux — Privilege Escalation](02-Linux-Privilege-Escalation/README.md) | Passer d'un shell utilisateur à root | 🚧 en cours |
 | 03 | [Web — OWASP](03-Web-OWASP/README.md) | Identifier et exploiter les 10 risques OWASP | 🚧 en cours |
 | 04 | [Reverse Engineering — CLI](04-Reverse-Engineering-CLI/README.md) | Comprendre un binaire inconnu, sans interface graphique | 🚧 en cours |

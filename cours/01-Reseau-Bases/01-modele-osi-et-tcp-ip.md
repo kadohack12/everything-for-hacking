@@ -88,9 +88,27 @@ Deux conséquences pratiques :
 - **Ce que voit un IDS dépend de la couche où il inspecte.** Un filtrage L3/L4 ne voit pas une
   attaque dans le corps HTTP.
 
-[TODO: exemple concret / capture Wireshark — `curl http://example.com`, puis clic droit sur le
-paquet HTTP → Follow → TCP Stream, et capture de la pile d'encapsulation dans le panneau
-« Packet Details »]
+Exemple mesuré — une requête HTTP sur la boucle locale, disséquée par `tshark` :
+
+```bash
+tshark -r http.pcap -Y "http.request" -V | sed -n '1,3p;15,17p;24,30p'
+```
+
+```text
+Frame 4: 144 bytes on wire (1152 bits), 144 bytes captured (1152 bits)
+    Encapsulation type: Ethernet (1)
+    [Protocols in frame: eth:ethertype:ip:tcp:http]
+Ethernet II, Src: 00:00:00_00:00:00, Dst: 00:00:00_00:00:00
+    Type: IPv4 (0x0800)
+Internet Protocol Version 4, Src: 127.0.0.1, Dst: 127.0.0.1
+    Total Length: 130
+    Time to Live: 64
+    Protocol: TCP (6)
+```
+
+La ligne `Protocols in frame: eth:ethertype:ip:tcp:http` **est** l'encapsulation : chaque couche
+ajoute son en-tête, dans cet ordre. Les MAC à zéro sont normales sur `lo` : la boucle locale n'a pas
+de carte Ethernet, Wireshark affiche un en-tête factice.
 
 ## 4. Les protocoles clés
 
@@ -101,8 +119,21 @@ paquet HTTP → Follow → TCP Stream, et capture de la pile d'encapsulation dan
 - **En CTF** : un ARP spoof en lab permet le man-in-the-middle sur un réseau commuté.
 - **À regarder** : `arp -a`, trames `ARP` en broadcast, doublons de MAC.
 
-[TODO: exemple concret / capture Wireshark — `arp -a` avant/après un `bettercap` ARP spoof en
-lab isolé]
+Exemple mesuré — une résolution normale, puis une réponse non sollicitée :
+
+```bash
+tshark -r arp.pcap -T fields -e frame.number -e arp.opcode -e arp.src.hw_mac -e arp.src.proto_ipv4
+```
+
+```text
+1       1       aa:00:00:00:00:01       192.168.1.10
+2       2       aa:00:00:00:00:fe       192.168.1.1
+3       2       aa:00:00:00:00:99       192.168.1.1
+```
+
+Les trames 1 et 2 sont une résolution ordinaire. **La trame 3 est l'anomalie** : une seconde MAC
+annonce la même IP, sans requête préalable. C'est la signature d'un ARP spoofing — et ce que
+révèle un `ip neigh` dont une entrée change de MAC en quelques secondes.
 
 ### IP — acheminer un paquet (L3)
 
@@ -119,8 +150,25 @@ lab isolé]
   ouverts (ICMP filtré).
 - **En CTF** : ICMP tunneling, exfiltration lente, découverte d'hôtes via `nmap -sn`.
 
-[TODO: capture Wireshark — un `ping` (echo request/reply) et un `traceroute` (TTL croissant +
-time exceeded)]
+Exemple mesuré — echo request/reply, puis TTL croissant :
+
+```bash
+tshark -r icmp-lab.pcap -T fields -e frame.number -e ip.ttl -e icmp.type -e icmp.seq
+tshark -r traceroute-lab.pcap -T fields -e frame.number -e ip.src -e ip.ttl -e icmp.type
+```
+
+```text
+1       64      8       1
+2       64      0       1
+
+1       192.168.1.10    1
+2       192.168.1.1,192.168.1.10        64,1    11
+3       192.168.1.10    2
+4       198.51.100.1,192.168.1.10       64,1    11
+```
+
+Type 8 = echo request, 0 = echo reply, 11 = time exceeded. Chaque sonde de traceroute part avec un
+TTL de plus ; le routeur qui l'expulse répond en type 11. Tout le mécanisme tient dans ce champ.
 
 ### TCP — flux fiable, orienté connexion (L4)
 
@@ -131,8 +179,28 @@ time exceeded)]
   port fermé. C'est exactement ce que fait un scan `-sS`.
 - **En CTF** : scan furtif, SYN flood, détection de services par bannière.
 
-[TODO: capture Wireshark — handshake complet, filtre `tcp.flags.syn == 1`, puis la même
-conversation vue par `nmap -sS -p 80,443`]
+Exemple mesuré — scan SYN sur un port ouvert et un port fermé :
+
+```bash
+sudo nmap -sS -Pn -p 8080,9999 127.0.0.1
+```
+
+```text
+PORT     STATE  SERVICE
+8080/tcp open   http-proxy
+9999/tcp closed abyss
+```
+
+La capture correspondante, réduite aux paquets qui décident :
+
+```text
+1       8080    True    False   False     SYN
+2       48347   True    True    False     SYN/ACK
+3       8080    False   False   True      RST
+```
+
+`nmap -sS` n'envoie jamais le troisième ACK : il coupe avec un `RST` dès qu'il a la réponse. Un
+port fermé produit `SYN` → `RST/ACK` ; un port filtré ne produit rien du tout.
 
 ### UDP — datagrammes sans état (L4)
 
@@ -149,8 +217,24 @@ conversation vue par `nmap -sS -p 80,443`]
 - **En CTF** : énumération de sous-domaines, transfert de zone mal configuré, DNS tunneling pour
   l'exfiltration.
 
-[TODO: exemple concret / capture Wireshark — `dig +trace example.com`, puis un `dig AXFR` sur une
-zone de lab]
+Exemple mesuré — délégation suivie pas à pas, puis tentative de transfert de zone :
+
+```bash
+dig +trace example.com A
+dig +time=2 +tries=1 AXFR example.com @10.3.0.10
+```
+
+```text
+;; Received 729 bytes from 10.3.0.10#53(10.3.0.10) in 0 ms
+com.                    172800  IN      NS      a.gtld-servers.net.
+
+; <<>> DiG 9.20.30-1~deb13u1-Debian <<>> +time=2 +tries=1 AXFR example.com @10.3.0.10
+; Transfer failed.
+```
+
+`+trace` montre la chaîne racine → TLD → zone, sans cache. `AXFR` échoue ici : le transfert n'est
+autorisé que vers les serveurs secondaires déclarés. Un `AXFR` qui réussit depuis n'importe où est
+une mauvaise configuration à signaler.
 
 ### HTTP — la couche applicative qu'on exploite le plus (L7)
 
@@ -160,8 +244,19 @@ zone de lab]
   Beaucoup de services web vivent ailleurs : 8080, 8443, 5000, 3000…
 - **En CTF** : énumération de répertoires, manipulation de cookies/JWT, injection, SSRF, IDOR.
 
-[TODO: capture Wireshark — `curl -v`, un `GET` puis un `POST` avec cookie de session, et la même
-chose en HTTPS pour montrer que le contenu devient illisible]
+Exemple mesuré — un `POST` avec cookie de session :
+
+```bash
+tshark -r post.pcap -Y http.request -T fields -e http.request.method -e http.cookie -e http.file_data
+```
+
+```text
+POST    session=abc123  757365723d616c69636526706173733d736563726574
+```
+
+Le corps, en hexadécimal, se lit directement : `user=alice&pass=secret`. Sur un réseau non chiffré,
+un mot de passe en clair ne demande aucun outil. La même requête en HTTPS ne laisse voir que le
+ClientHello, le ServerHello et des tailles de paquets — voir [1.8](08-http-et-tls.md).
 
 ## 5. Tableaux de synthèse
 

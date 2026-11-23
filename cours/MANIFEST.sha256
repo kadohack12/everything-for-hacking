@@ -1,7 +1,17 @@
 # Intégrité du dossier cours/ — généré par `python3 scripts/check_cours.py --update`
 # Ne pas éditer à la main : toute modification d'un cours doit être suivie d'une régénération.
-de768bf556335ad0d6d74014acaa9c67e01580f10d04228e7ba9de0112699edf  cours/01-Reseau-Bases/01-modele-osi-et-tcp-ip.md
-e235565193d7418ea5a8d0c2fcc486ff83de68675266de1a667c4172c5823938  cours/01-Reseau-Bases/README.md
+cf083433e0591dbcd5d44b6211ca13feeb9ce90228ffa99be6c9bc76ba2b131f  cours/01-Reseau-Bases/01-modele-osi-et-tcp-ip.md
+a4fbe7e0b93513ee185a8807efdbc0d16fc7e5ae65952960260cd6aa7eeda6f7  cours/01-Reseau-Bases/02-adressage-ipv4.md
+e6f0650eafda97f3ae7fc4f945d928557d0d0d949e107f626cc46765f1b1e5c8  cours/01-Reseau-Bases/03-ipv6.md
+a667401e3d6fc316a6a7fd4bd00080762fe546cf4a4bb5f408ea5ab57993d66a  cours/01-Reseau-Bases/04-couche-2-ethernet-arp-vlan.md
+6e32b20bf94f5c650b7a2cdb126a1dd394b396bc3911c12c139ebdfa00340bd7  cours/01-Reseau-Bases/05-tcp-udp.md
+a8db87c7aae4ffc73dfa75b88ac819c62324299128c41e8a35cfd9a973301e22  cours/01-Reseau-Bases/06-dns.md
+d78af9cf5feba0f3d2f0bb92004a95f41f7e89e6ebb153c661e71371d3286ca0  cours/01-Reseau-Bases/07-dhcp.md
+ea59af7444876643a0ec649c4fdb6a2a00339c7809942f05a540799718cbc330  cours/01-Reseau-Bases/08-http-et-tls.md
+c445f5633eca4f73466bd6ec05832c889b2487d4564613e830d0672724f44f71  cours/01-Reseau-Bases/09-routage-et-nat.md
+75684178bb1bcaaa54504c1466c56f9705682425459faa95bb9f134ceee4b9ef  cours/01-Reseau-Bases/10-diagnostic.md
+4e1dcc00585908d549294cd27ee15ababee1d1563eee9984b67478b7a7cfad08  cours/01-Reseau-Bases/11-wireshark-pratique.md
+266e102978535a4dfa84322c755ce9887bf9b7b6e86d6d7125b6a48be5a814c1  cours/01-Reseau-Bases/README.md
 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  cours/01-Reseau-Bases/assets/.gitkeep
 937183924c275469156a5b7f0613b655a56f0151e6c0cc5203ac74fdd621f323  cours/02-Linux-Privilege-Escalation/README.md
 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  cours/02-Linux-Privilege-Escalation/assets/.gitkeep
@@ -27,4 +37,4 @@ bce1cbd0586d615c16670aac292fe22ce55a737ffffd3200b830755f6884ffb0  cours/05-Pwnto
 37d46c03323acb47bf6d43e577f4b53ce83f7cb8695dc066ed18edb10eba06ba  cours/05-Pwntools/09-gdb-et-debug.md
 6b81f4f4bdd9daa7458024fa3eeed53822e003d16363932be7989e7fc8189064  cours/05-Pwntools/10-methode-et-gabarit.md
 f19924553d98d472d647df695eb6c494dd5eb5d1b8985a6562225aa30a948745  cours/05-Pwntools/README.md
-cfb3f5f6a9d0242cbbaeb052a94e5d9383d52fa77d136f46bd617b8cece08934  cours/README.md
+815deaa86a95bd96c84a5ce01f795bcb62019d7d41abd7bac973d3b31d0cdb8a  cours/README.md
