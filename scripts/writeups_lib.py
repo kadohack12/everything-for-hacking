@@ -14,7 +14,9 @@ IGNORED_DIR_NAMES = {
     ".git",
     ".openhands",
     "__pycache__",
+    "build",
     "node_modules",
+    "site",
     "venv",
     ".venv",
 }

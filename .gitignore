@@ -30,3 +30,7 @@ notes-privees.md
 # Python
 __pycache__/
 *.pyc
+
+# Site statique (genere par scripts/build_docs.py)
+build/
+site/

@@ -1,22 +1,72 @@
+<div align="center">
+
 # Everything For Hacking
 
-[![Writeups](https://img.shields.io/badge/writeups-CTF%20%26%20machines-blue)](writeups/README.md)
-[![Cours](https://img.shields.io/badge/cours-fondamentaux-green)](cours/README.md)
-[![Contributions](https://img.shields.io/badge/contributions-ouvertes-brightgreen)](CONTRIBUTING.md)
+**Writeups CTF et cours de cybersécurité, en français, en Markdown, sans paywall.**
+
+[![Site](https://img.shields.io/badge/site-en%20ligne-2ea44f?logo=materialformkdocs&logoColor=white)](https://kadohack12.github.io/everything-for-hacking/)
+[![CI](https://github.com/kadohack12/everything-for-hacking/actions/workflows/ci.yml/badge.svg)](https://github.com/kadohack12/everything-for-hacking/actions/workflows/ci.yml)
+[![Writeups](https://img.shields.io/badge/writeups-83-blue)](writeups/README.md)
+[![Cours](https://img.shields.io/badge/cours-5%20modules-orange)](cours/README.md)
 [![Licence](https://img.shields.io/badge/licence-CC%20BY--SA%204.0-lightgrey)](LICENSE)
+[![PRs](https://img.shields.io/badge/PRs-bienvenues-brightgreen)](CONTRIBUTING.md)
 
-Dépôt **collaboratif** de writeups et de cours de cybersécurité :
+[**Parcourir le site**](https://kadohack12.github.io/everything-for-hacking/) ·
+[**Writeups**](writeups/README.md) ·
+[**Cours**](cours/README.md) ·
+[**Ressources**](RESSOURCES.md) ·
+[**Contribuer**](CONTRIBUTING.md)
 
-- **[`writeups/`](writeups/README.md)** — solutions détaillées de machines et de challenges CTF,
-  ouvertes à toutes les contributions : ajoute le tien, il apparaît dans l'index avec ton nom.
-  Quatre sections : [Hack The Box](writeups/hackthebox/), [TryHackMe](writeups/tryhackme/),
-  [Hackropole](writeups/hackropole.fr/) et [autres plateformes / CTFs](writeups/autres/).
-- **[`cours/`](cours/README.md)** — notes de cours structurées (réseau, Linux, web, reverse
-  engineering en ligne de commande).
-  Espace **protégé** : les corrections passent par une issue, pas par une PR.
+</div>
 
-Tout est en Markdown, lisible directement sur GitHub, et les captures d'écran sont versionnées
-à côté de chaque writeup (pas de lien externe qui meurt).
+> **TL;DR (EN)** — 83 French CTF writeups (TryHackMe, Hackropole/FCSC, King of the Hill, VulnHub,
+> PortSwigger, PicoCTF) and 5 structured courses (networking & Wireshark, Linux privilege
+> escalation, OWASP Top 10, reverse engineering CLI, pwntools). Plain Markdown, auto-indexed,
+> CI-checked. Contributions welcome.
+
+## Pourquoi ce dépôt
+
+La plupart des writeups sont des captures d'écran suivies d'un `cat flag.txt`. Ici, chaque writeup
+explique **le raisonnement** : pourquoi ce port, pourquoi cette hypothèse, pourquoi ça a échoué.
+Les cours, eux, sont écrits pour être **rejoués** : chaque commande a été exécutée avant d'être
+publiée, et les sorties affichées sont les vraies.
+
+Trois principes :
+
+- **reproductible** — commandes complètes, versions, sorties réelles ;
+- **honnête** — ce qui n'a pas marché est écrit aussi ;
+- **accessible** — tout est en Markdown, lisible sur GitHub comme sur le site, sans compte.
+
+## Ce que tu trouveras
+
+| Section | Contenu | Volume |
+| --- | --- | --- |
+| [TryHackMe](writeups/tryhackme/README.md) | Rooms guidées, dont un **King of the Hill** avec la partie défensive | 3 rooms |
+| [Hackropole / FCSC](writeups/hackropole.fr/README.md) | Challenges crypto, web, reverse, pwn, forensics | 12 challenges |
+| [Autres plateformes](writeups/autres/README.md) | VulnHub, PortSwigger, PicoCTF, OverTheWire, CTFs (dont hackerlab Bénin 2026) | 68 challenges |
+| [Hack The Box](writeups/hackthebox/) | Section ouverte : **la place est libre** | 0 machine |
+| [Cours](cours/README.md) | Réseau (11 chapitres), Linux privesc, OWASP, reverse CLI, pwntools | 5 modules |
+
+## À la une
+
+- **[panda — King of the Hill (TryHackMe)](writeups/tryhackme/Rooms/panda/)** — RCE web, `sudo ftp`,
+  puis toute la défense : `king.txt` en bind-mount read-only, cron root piégé corrigé, PwnKit bloqué.
+- **[Réseau : les bases](cours/01-Reseau-Bases/README.md)** — 11 chapitres, du modèle OSI à
+  Wireshark, avec captures ARP, DHCP, TCP, DNS, TLS et labs exécutés.
+- **[Pwntools](cours/05-Pwntools/README.md)** — 10 chapitres : tubes, ELF, cyclic, ret2win,
+  ret2libc, format strings, gabarit de solve.
+- **[Hackropole / FCSC](writeups/hackropole.fr/README.md)** — 12 challenges résolus, du crypto au pwn.
+
+## Démarrer
+
+```bash
+git clone https://github.com/kadohack12/everything-for-hacking.git
+cd everything-for-hacking
+$EDITOR writeups/tryhackme/Rooms/panda/README.md   # ou n'importe quelle page
+```
+
+Sans rien installer : le [site](https://kadohack12.github.io/everything-for-hacking/) a la recherche
+intégrée, et chaque dossier se lit directement sur GitHub.
 
 ## Sommaire
 
@@ -55,10 +105,12 @@ Tout est en Markdown, lisible directement sur GitHub, et les captures d'écran s
 │   ├── 01-Reseau-Bases/
 │   ├── 02-Linux-Privilege-Escalation/
 │   ├── 03-Web-OWASP/
-│   └── 04-Reverse-Engineering-CLI/   # tout en CLI, utilisable en SSH
+│   ├── 04-Reverse-Engineering-CLI/   # tout en CLI, utilisable en SSH
+│   └── 05-Pwntools/
 ├── scripts/                   # automatisations (Python, sans dépendance)
 │   ├── new_writeup.py         # assistant : crée un writeup complet
 │   ├── update_index.py        # régénère les tableaux d'index
+│   ├── build_docs.py          # assemble le site statique (mkdocs)
 │   ├── check_frontmatter.py   # conseils : structure et frontmatter
 │   ├── check_cours.py         # cours : structure + empreintes (manifeste)
 │   ├── check_links.py         # liens relatifs et images
@@ -68,6 +120,7 @@ Tout est en Markdown, lisible directement sur GitHub, et les captures d'écran s
 │   └── writeups_lib.py        # code partagé
 └── .github/
     ├── workflows/ci.yml       # CI : contrôles bloquants + conseils
+    ├── workflows/pages.yml    # site statique sur GitHub Pages
     ├── workflows/update-index.yml  # régénère l'index après merge
     ├── CODEOWNERS             # revue obligatoire sur cours/
     ├── MAINTAINERS            # logins autorisés à modifier cours/
@@ -132,6 +185,16 @@ La CI (`.github/workflows/ci.yml`) tourne sur chaque push et PR vers `main` :
 Un septième workflow, [`update-index.yml`](.github/workflows/update-index.yml), régénère l'index
 après chaque merge touchant `writeups/` : un contributeur n'a pas à y penser.
 
+Un huitième, [`pages.yml`](.github/workflows/pages.yml), reconstruit le site statique
+(mkdocs-material : recherche, navigation, `sitemap.xml`) à chaque modification de Markdown.
+Prévisualisation locale :
+
+```bash
+pip install mkdocs-material
+python3 scripts/build_docs.py
+mkdocs serve -f build/mkdocs.yml      # http://127.0.0.1:8000
+```
+
 Les trois jobs « conseil » sont en `continue-on-error` : ils **conseillent** sans bloquer une PR.
 Pour un passage de contrôle strict avant merge, ajoute `--strict` à `check_frontmatter.py` ou
 `check_drafts.py`.
@@ -158,3 +221,16 @@ Aucune cible réelle, aucun système tiers. Le contenu est publié à but pédag
 Contenu sous [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.fr) sauf mention contraire —
 texte intégral dans [`LICENSE`](LICENSE). Les contributions sont publiées sous la même licence :
 attribution obligatoire, partage à l'identique.
+
+## Partager
+
+Si un writeup t'a débloqué, l'étoile coûte un clic et aide les suivants à le trouver :
+
+[![Star](https://img.shields.io/github/stars/kadohack12/everything-for-hacking?style=social)](https://github.com/kadohack12/everything-for-hacking/stargazers)
+
+## Mots-clés
+
+Writeups CTF en français · Hack The Box · TryHackMe · Hackropole / FCSC · King of the Hill (KoTH) ·
+VulnHub · PortSwigger · PicoCTF · OverTheWire · privilege escalation Linux · reverse engineering ·
+pwn / exploitation binaire · pwntools · OWASP Top 10 · réseau et Wireshark · analyse de trames ·
+nmap · ffuf · Burp Suite · Ghidra · cours de cybersécurité · apprentissage par la pratique.
