@@ -1,21 +1,25 @@
 <div align="center">
 
-# Everything For Hacking
+<h1>Everything For Hacking</h1>
 
-**Writeups CTF et cours de cybersécurité, en français, en Markdown, sans paywall.**
+<p><strong>Writeups CTF et cours de cybersécurité, en français, en Markdown, sans paywall.</strong></p>
 
-[![Site](https://img.shields.io/badge/site-en%20ligne-2ea44f?logo=materialformkdocs&logoColor=white)](https://kadohack12.github.io/everything-for-hacking/)
-[![CI](https://github.com/kadohack12/everything-for-hacking/actions/workflows/ci.yml/badge.svg)](https://github.com/kadohack12/everything-for-hacking/actions/workflows/ci.yml)
-[![Writeups](https://img.shields.io/badge/writeups-83-blue)](writeups/README.md)
-[![Cours](https://img.shields.io/badge/cours-5%20modules-orange)](cours/README.md)
-[![Licence](https://img.shields.io/badge/licence-CC%20BY--SA%204.0-lightgrey)](LICENSE)
-[![PRs](https://img.shields.io/badge/PRs-bienvenues-brightgreen)](CONTRIBUTING.md)
+<p>
+  <a href="https://kadohack12.github.io/everything-for-hacking/"><img alt="Site" src="https://img.shields.io/badge/site-en%20ligne-2ea44f"></a>
+  <a href="https://github.com/kadohack12/everything-for-hacking/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/kadohack12/everything-for-hacking/actions/workflows/ci.yml/badge.svg"></a>
+  <a href="writeups/README.md"><img alt="Writeups" src="https://img.shields.io/badge/writeups-83-blue"></a>
+  <a href="cours/README.md"><img alt="Cours" src="https://img.shields.io/badge/cours-5%20modules-orange"></a>
+  <a href="LICENSE"><img alt="Licence" src="https://img.shields.io/badge/licence-CC%20BY--SA%204.0-lightgrey"></a>
+  <a href="CONTRIBUTING.md"><img alt="PRs" src="https://img.shields.io/badge/PRs-bienvenues-brightgreen"></a>
+</p>
 
-[**Parcourir le site**](https://kadohack12.github.io/everything-for-hacking/) ·
-[**Writeups**](writeups/README.md) ·
-[**Cours**](cours/README.md) ·
-[**Ressources**](RESSOURCES.md) ·
-[**Contribuer**](CONTRIBUTING.md)
+<p>
+  <a href="https://kadohack12.github.io/everything-for-hacking/"><strong>Parcourir le site</strong></a> ·
+  <a href="writeups/README.md"><strong>Writeups</strong></a> ·
+  <a href="cours/README.md"><strong>Cours</strong></a> ·
+  <a href="RESSOURCES.md"><strong>Ressources</strong></a> ·
+  <a href="CONTRIBUTING.md"><strong>Contribuer</strong></a>
+</p>
 
 </div>
 
