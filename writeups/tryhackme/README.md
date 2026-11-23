@@ -10,9 +10,17 @@ Rooms suivies sur [TryHackMe](https://tryhackme.com/), classées dans `Rooms/<No
 
 | Room | Thème | Difficulté | Auteur | Date | Writeup |
 | --- | --- | --- | --- | --- | --- |
-| _aucun writeup publié pour le moment_ |  |  |  |  |  |
+| Daily Bugle | Room | — | [Alexis Dubus](https://github.com/breaching) | 2026-11-20 | [Writeup](Rooms/daily-bugle/) |
+| Pickle Rick | Room | — | [Alexis Dubus](https://github.com/breaching) | 2026-11-20 | [Writeup](Rooms/pickle-rick/) |
 
 <!-- INDEX:END -->
+
+## Crédits
+
+Les writeups de **Daily Bugle** et **Pickle Rick** viennent du dépôt
+[breaching/ctf-writeups](https://github.com/breaching/ctf-writeups), publié sous licence **MIT**
+(© 2026 Alexis Dubus). Seul le frontmatter de ce dépôt a été ajouté, et les captures déplacées
+dans les `assets/` des rooms.
 
 ## Ajouter une room
 

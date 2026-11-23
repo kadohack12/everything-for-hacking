@@ -31,7 +31,8 @@ ci-dessous avec son auteur.
 
 | Room | Thème | Difficulté | Auteur | Date | Writeup |
 | --- | --- | --- | --- | --- | --- |
-| _aucun writeup publié pour le moment_ |  |  |  |  |  |
+| Daily Bugle | Room | — | [Alexis Dubus](https://github.com/breaching) | 2026-11-20 | [Writeup](tryhackme/Rooms/daily-bugle/) |
+| Pickle Rick | Room | — | [Alexis Dubus](https://github.com/breaching) | 2026-11-20 | [Writeup](tryhackme/Rooms/pickle-rick/) |
 
 <!-- INDEX:END:tryhackme -->
 
@@ -42,6 +43,16 @@ ci-dessous avec son auteur.
 | Challenge | Catégorie | Édition | Auteur | Date | Writeup |
 | --- | --- | --- | --- | --- | --- |
 | AdveRSArial Crypto (Infant) | crypto | 2024 | [Kadohack12](https://github.com/kadohack12) | 2026-11-20 | [Writeup](hackropole.fr/Challenges/crypto/adversarial-crypto-infant/) |
+| Bubulle Corp (1/2) | web | 2026 | [Alexis Dubus](https://github.com/breaching) | 2026-11-20 | [Writeup](hackropole.fr/Challenges/web/bubulle-corp-2026/) |
+| Extensif | reverse | 2026 | [Alexis Dubus](https://github.com/breaching) | 2026-11-20 | [Writeup](hackropole.fr/Challenges/reverse/extensif-2026/) |
+| Forenzeek — compromission initiale | forensics | 2026 | [Alexis Dubus](https://github.com/breaching) | 2026-11-20 | [Writeup](hackropole.fr/Challenges/forensics/forenzeek-compromission-2026/) |
+| Forenzeek — latéralisation | forensics | 2026 | [Alexis Dubus](https://github.com/breaching) | 2026-11-20 | [Writeup](hackropole.fr/Challenges/forensics/forenzeek-lateralisation-2026/) |
+| Grhelp — connect back | forensics | 2026 | [Alexis Dubus](https://github.com/breaching) | 2026-11-20 | [Writeup](hackropole.fr/Challenges/forensics/grhelp-connectback-2026/) |
+| Grhelp — exfiltration | forensics | 2026 | [Alexis Dubus](https://github.com/breaching) | 2026-11-20 | [Writeup](hackropole.fr/Challenges/forensics/grhelp-exfiltration-2026/) |
+| RemoBLE Control | hardware | 2026 | [Alexis Dubus](https://github.com/breaching) | 2026-11-20 | [Writeup](hackropole.fr/Challenges/hardware/remoble-control-2026/) |
+| This is fine | crypto | 2026 | [Alexis Dubus](https://github.com/breaching) | 2026-11-20 | [Writeup](hackropole.fr/Challenges/crypto/this-is-fine-2026/) |
+| Tortoise Say | hardware | 2026 | [Alexis Dubus](https://github.com/breaching) | 2026-11-20 | [Writeup](hackropole.fr/Challenges/hardware/tortoise-say-2026/) |
+| Web Logs | forensics | 2026 | [Alexis Dubus](https://github.com/breaching) | 2026-11-20 | [Writeup](hackropole.fr/Challenges/forensics/web-logs-2026/) |
 | À l'aise | crypto | 2022 | [Kadohack12](https://github.com/kadohack12) | 2026-11-20 | [Writeup](hackropole.fr/Challenges/crypto/a-laise/) |
 
 <!-- INDEX:END:hackropole.fr -->
