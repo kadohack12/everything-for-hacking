@@ -10,6 +10,7 @@ Rooms suivies sur [TryHackMe](https://tryhackme.com/), classées dans `Rooms/<No
 
 | Room | Thème | Difficulté | Auteur | Date | Writeup |
 | --- | --- | --- | --- | --- | --- |
+| panda (KoTH) | Room | Medium | [kadohack12](https://github.com/kadohack12) | 2026-11-22 | [Writeup](Rooms/panda/) |
 | Daily Bugle | Room | — | [Alexis Dubus](https://github.com/breaching) | 2026-11-20 | [Writeup](Rooms/daily-bugle/) |
 | Pickle Rick | Room | — | [Alexis Dubus](https://github.com/breaching) | 2026-11-20 | [Writeup](Rooms/pickle-rick/) |
 
