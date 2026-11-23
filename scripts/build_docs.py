@@ -108,7 +108,8 @@ def build_nav(directory: Path, rel: Path):
         return [{"Accueil": "index.md"}, *children]
     if index.exists():
         page = (rel / "index.md").as_posix()
-        return [{page_title(index): [page, *children]}]
+        title = page_title(index)
+        return [{title: [{"Vue d'ensemble": page}, *children]}]
     if children:
         return [{directory.name.replace("-", " "): children}]
     return []
@@ -149,6 +150,7 @@ def write_config(nav) -> Path:
         "        name: Thème clair",
         "markdown_extensions:",
         "  - admonition",
+        "  - md_in_html",
         "  - tables",
         "  - toc:",
         "      permalink: true",
