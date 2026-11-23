@@ -28,6 +28,7 @@ Tout est en Markdown, lisible directement sur GitHub, et les captures d'écran s
 | [`writeups/hackropole.fr/`](writeups/hackropole.fr/) | Challenges Hackropole (FCSC) | [Challenges/](writeups/hackropole.fr/Challenges/) |
 | [`writeups/autres/`](writeups/autres/) | PicoCTF, PortSwigger, OverTheWire, VulnHub, CTFs archivés | [autres/README.md](writeups/autres/README.md) |
 | [`cours/`](cours/README.md) | Programme et notes de cours (protégé) | [cours/README.md](cours/README.md) |
+| [`RESSOURCES.md`](RESSOURCES.md) | Sélection d'outils, plateformes et références externes | [RESSOURCES.md](RESSOURCES.md) |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | Comment contribuer, structure, frontmatter | — |
 
 ## Arborescence
