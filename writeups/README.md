@@ -31,7 +31,7 @@ ci-dessous avec son auteur.
 
 | Room | Thème | Difficulté | Auteur | Date | Writeup |
 | --- | --- | --- | --- | --- | --- |
-| panda (KoTH) | Room | Medium | [kadohack12](https://github.com/kadohack12) | 2026-11-22 | [Writeup](tryhackme/Rooms/panda/) |
+| panda (KoTH) | Room | Medium | [Durrell-229](https://github.com/Durrell-229) | 2026-11-22 | [Writeup](tryhackme/Rooms/panda/) |
 | Daily Bugle | Room | — | [Alexis Dubus](https://github.com/breaching) | 2026-11-20 | [Writeup](tryhackme/Rooms/daily-bugle/) |
 | Pickle Rick | Room | — | [Alexis Dubus](https://github.com/breaching) | 2026-11-20 | [Writeup](tryhackme/Rooms/pickle-rick/) |
 

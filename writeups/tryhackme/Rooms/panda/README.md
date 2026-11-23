@@ -5,8 +5,8 @@ category: "Room"
 os: "Linux"
 difficulty: "Medium"
 date: 2026-11-22
-author: "kadohack12"
-author_github: "kadohack12"
+author: "Durrell-229"
+author_github: "Durrell-229"
 tags: [tryhackme, koth, web, rce, privesc, defense, linux]
 status: published
 ---
