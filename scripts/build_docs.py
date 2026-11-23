@@ -39,6 +39,8 @@ SKIP_DIR_PREFIXES = ("_", ".")
 
 H1_RE = re.compile(r"^#\s+(.+?)\s*$", re.MULTILINE)
 README_LINK_RE = re.compile(r"(\]\((?:[^)\s]*/)?)README\.md((?:#[^)\s]*)?\))")
+TEMPLATE_LINK_RE = re.compile(r"\]\((?:[^)\s]*/)?_template/(?:index|README)\.md((?:#[^)\s]*)?)\)")
+DOTFILE_LINK_RE = re.compile(r"\]\((?:\.\./)*(\.github|scripts)/[^)\s]+\)")
 
 
 def is_skipped(path: Path) -> bool:
@@ -70,7 +72,7 @@ def copy_tree(src: Path, dst: Path) -> None:
                 continue
             target.mkdir(parents=True, exist_ok=True)
             copy_tree(entry, target)
-        elif entry.suffix.lower() in {".md", ".png", ".jpg", ".jpeg", ".gif", ".svg", ".webp", ".pdf"}:
+        elif entry.suffix.lower() in {".md", ".png", ".jpg", ".jpeg", ".gif", ".svg", ".webp", ".pdf", ".sha256"}:
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(entry, target)
         elif entry.name in {"LICENSE", "LICENCE"}:
@@ -88,6 +90,10 @@ def rewrite_links(directory: Path) -> int:
     for page in directory.rglob("*.md"):
         text = page.read_text(encoding="utf-8")
         new = README_LINK_RE.sub(r"\1index.md\2", text)
+        # le modèle n'est pas publié (dossier _*) : renvoyer vers GitHub
+        new = TEMPLATE_LINK_RE.sub(lambda m: f"]({REPO_URL}/tree/main/writeups/_template{m.group(1)})", new)
+        # les fichiers de .github/ ne sont pas publiés : renvoyer vers GitHub
+        new = DOTFILE_LINK_RE.sub(lambda m: f"]({REPO_URL}/tree/main/{m.group(1)})", new)
         if new != text:
             page.write_text(new, encoding="utf-8")
             changed += 1
